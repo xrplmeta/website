@@ -1,0 +1,19 @@
+
+include '~/styles/about/insight.xcss'
+
+
+export default x => (
+	<stack class="section page-width insight">
+		<heading>How it works</heading>
+		<text>
+			XRPL Meta runs as a self-contained node. Its footprint is kept as small as possible. 
+			To do its work, all it needs is an internet connection and access to the file system.
+		</text>
+		<icon class="flowchart" asset="flowchart"/>
+		<text>
+			<span>This allows you to </span>
+			<link to="/use">run your own node</link>
+			<span> with ease.</span>
+		</text>
+	</stack>
+)

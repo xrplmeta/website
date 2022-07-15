@@ -1,0 +1,10 @@
+import Public from './Public.xjs'
+import SelfHosted from './SelfHosted.xjs'
+
+
+export default x => (
+	<stack class="page use">
+		<Public/>
+		<SelfHosted/>
+	</stack>
+)

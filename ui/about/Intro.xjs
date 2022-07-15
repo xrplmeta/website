@@ -1,0 +1,74 @@
+import Study from '../fx/Study.xjs'
+
+include '~/styles/about/intro.xcss'
+
+export default x => (
+	<stack class="section page-width intro">
+		<heading>An Extension to the XRP Ledger</heading>
+		<text>
+			XRPL Meta provides the data that is not obtainable by the standard rippled API. 
+			It makes the data available through WebSocket and JSON RPC, just like rippled.
+			It connects to any number of rippled nodes and tracks updates in real time. 
+			Historical data is being backfilled.
+		</text>
+		<heading secondary>Available Data</heading>
+		<stack class="checklist">
+			<flex>
+				<label>✅</label>
+				<text>Complete list of all tokens on the XRPL</text>
+			</flex>
+			<flex>
+				<label>✅</label>
+				<text>Token Metadata: names, icons, descriptions, and more</text>
+			</flex>
+			<flex>
+				<label>✅</label>
+				<text>Total number of trustlines to a token at any point in time</text>
+			</flex>
+			<flex>
+				<label>✅</label>
+				<text>Total number of holders of a token at any point in time</text>
+			</flex>
+			<flex>
+				<label>✅</label>
+				<text>Total supply of a token at any point in time</text>
+			</flex>
+			<flex>
+				<label>✅</label>
+				<text>The marketcap of a token at any point in time</text>
+			</flex>
+			<flex>
+				<label>✅</label>
+				<text>The exchange rate of a token pair at any point in time</text>
+			</flex>
+			<flex>
+				<label>✅</label>
+				<text>The trading volume of a token pair for any time range</text>
+			</flex>
+			<flex>
+				<label>✅</label>
+				<text>The ledger sequence of any ledger close time</text>
+			</flex>
+			<flex>
+				<label>✅</label>
+				<text>The count of transactions and ledger objects of any ledger</text>
+			</flex>
+			<flex>
+				<label>✅</label>
+				<text>Blazingly fast account networth estimates</text>
+			</flex>
+			<flex>
+				<label>✅</label>
+				<text>Blazingly fast balance value estimates</text>
+			</flex>
+			<flex>
+				<label>✅</label>
+				<text>All of the above as a time series with any interval</text>
+			</flex>
+			<flex>
+				<label>⌛</label>
+				<text>Experimental NFT support is coming soon!</text>
+			</flex>
+		</stack>
+	</stack>
+)

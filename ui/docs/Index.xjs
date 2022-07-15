@@ -1,0 +1,70 @@
+import { Endpoint } from 'docier/rest'
+import { Command } from 'docier/websocket'
+import { rest, websocket } from '../../defs/apis.js'
+import Rest from './Rest.xjs'
+import WebSocket from './WebSocket.xjs'
+
+include '~/styles/docs/index.xcss'
+
+
+export default x => (
+	<stack class="page docs">
+		<router>
+			<route path="/">
+				<stack class="section page-width">
+					<heading>Documentation</heading>
+					<text>
+						<span>All endpoints below are shown using the public node URL.
+						This can be replaced with any other node, including a </span>
+						<link to="/use">self-hosted node</link>.
+					</text>
+				</stack>
+				<stack class="section page-width rest list">
+					<heading>REST API</heading>
+					{#for let endpoint of rest}
+						<link to={`/docs/rest/${endpoint.id}`}>
+							<Endpoint {...endpoint}/>
+						</link>
+					{/for}
+				</stack>
+				<stack class="section page-width websocket list">
+					<heading>WebSocket API</heading>
+					{#for let endpoint of websocket}
+						<link to={`/docs/websocket/${endpoint.id}`}>
+							<Command {...endpoint}/>
+						</link>
+					{/for}
+				</stack>
+			</route>
+			<route path="/rest/:operation">
+				<Back/>
+				<Provider type="rest">
+					<Rest/>
+				</Provider>
+			</route>
+			<route path="/websocket/:operation">
+				<Back/>
+				<Provider type="websocket">
+					<WebSocket/>
+				</Provider>
+			</route>
+		</router>
+	</stack>
+)
+
+const Provider = x => {
+	x.descriptor = x.attrs.type === 'rest'
+		? rest.find(r => r.id === x.params.operation)
+		: websocket.find(w => w.id === x.params.operation)
+
+	return x => x.children
+}
+
+const Back = x => (
+	<stack class="page-width">
+		<button class="back" onclick={() => x.route.back({fallback: '..'})}>
+			<icon asset="arrow-left"/>
+			<label>Back to list</label>
+		</button>
+	</stack>
+)

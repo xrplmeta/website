@@ -1,0 +1,15 @@
+include '~/styles/about/integrate.xcss'
+
+
+export default x => (
+	<stack class="section page-width integrate">
+		<heading>Get Started</heading>
+		<text>
+			Using XRPL Meta is designed to be as frictionless as possible. 
+			Visit the documentation page to learn how to make your first request.
+		</text>
+		<link class="standard button" to="/docs">
+			📖 Read Docs
+		</link>
+	</stack>
+)

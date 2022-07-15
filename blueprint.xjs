@@ -1,0 +1,11 @@
+import dotenv from 'dotenv'
+import App from './ui/App.xjs'
+
+dotenv.config()
+
+export default {
+	app: App,
+	server: {
+		port: process.env.PORT
+	}
+}

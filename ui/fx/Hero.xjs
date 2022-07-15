@@ -1,0 +1,191 @@
+import { Client } from '@xjs/web/api'
+
+include '~/styles/fx/hero.xcss'
+
+
+export default x => (
+	<absolute class="hero">
+		<flex>
+			<stack>
+				<heading>
+					An Open Standard for Asset Metadata
+					<br/>
+					on the XRP Ledger
+				</heading>
+			</stack>
+		</flex>
+		<Icons/>
+	</absolute>
+)
+
+
+const Icons = x => {
+	let client = new Client({url: 'https://s1.xrplmeta.org'})
+	let cont
+	let icons
+	let last
+	let spawn
+	let interval = 170
+	let presim = 10000
+	let index = 0
+	let stage = []
+	let pool = []
+	let run = true
+
+	function start(){
+		spawn = 0
+		last = performance.now()
+
+		for(let t=0; t < presim; t+=100){
+			step(100)
+		}
+
+		tick()
+	}
+
+	function tick(){
+		let now = performance.now()
+		let delta = Math.min(100, now - last)
+
+		step(delta)
+		render(delta)
+
+		if(run)
+			requestAnimationFrame(tick)
+
+		last = now
+	}
+
+	function step(delta){
+		if(spawn <= 0){
+			add()
+			spawn = interval
+		}else{
+			spawn -= delta
+		}
+
+		for(let i=0; i < stage.length; i++){
+			let u = stage[i]
+			
+			if(u.loaded && u.opacity < 1){
+				u.opacity += delta * 0.001
+			}
+
+			u.z += delta * 0.025
+			u.r += delta * u.spin
+			
+			if(u.z > 100){
+				cont.removeChild(u.element)
+				stage.splice(i, 1)
+				pool.push({element: u.element, url: u.url})
+				i--
+			}
+		}
+	}
+
+	function render(){
+		for(let u of stage){
+			u.element.style.opacity = u.opacity
+			u.element.style.transform = `translate3d(${u.x}px, ${u.y}px, ${u.z}px) rotate(${u.r}deg)`
+			u.element.style.zIndex = 1000+Math.round(u.z)
+
+			if(u.z > 90)
+				u.element.style.opacity = 0
+		}
+	}
+
+	function add(){
+		let element
+		let url = icons[(index++)%icons.length]
+		let a = Math.random() * Math.PI * 2
+		let d = 300 + Math.random() * 10
+		let x = Math.sin(a) * d
+		let y = Math.cos(a) * d
+		let z = -200
+		let r = 0
+		let spin = 0.01 * Math.random() * (x < 0 ? -1 : 1)
+		let u = {x, y, z, r, spin, opacity: 0, url}
+		let poolEntry = pool.find(p => p.url === url)
+
+		if(poolEntry){
+			pool.splice(pool.indexOf(poolEntry), 1)
+			element = poolEntry.element
+			u.loaded = true
+		}else{
+			element = document.createElement('img')
+			element.onload = () => u.loaded = true
+			element.src = url
+		}
+		
+		u.element = element
+
+		cont.appendChild(element)
+		stage.push(u)
+	}
+
+	return {
+		oncreate: async node => {
+			cont = node.dom
+			icons = []
+
+			let tokens = await client.get('/tokens', {trusted: undefined})
+
+			for(let token of tokens){
+				let icon = token.meta.currency.icon || token.meta.issuer.icon
+
+				if(icon && !icons.includes(icon))
+					icons.push(icon)
+			}
+
+			start()
+		},
+		onremove: node => {
+			run = false
+		},
+		view: node => (
+			<div class="icons"/>
+		)
+	}
+}
+
+/*
+onupdate: node => {
+		let ci = 0
+		let nextTime = 0
+		let minInterval = 12
+
+		Array.from(node.dom.querySelectorAll('.icons > img'))
+			.forEach((icon, i, icons) => {
+				icon.onload = () => {
+					let a = ci++ / icons.length * Math.PI * 2
+					let dx = -Math.sin(a)
+					let dy = -Math.cos(a)
+					let r = 100
+					let r0 = r
+					let r1 = r*2 + Math.sin(a * 12) * 50
+					let sx = dx * r0 * 3
+					let sy = dy * r0
+					let ex = dx * r1 * 3
+					let ey = dy * r1
+					
+					icon.style.opacity = '0'
+					icon.style.left = sx + 'px'
+					icon.style.top = sy + 'px'
+
+					let now = Date.now()
+					let t = Math.max(0, nextTime - now)
+					
+					nextTime = now + t + minInterval
+
+					setTimeout(() => {
+						icon.style.opacity = '1'
+						icon.style.left = ex + 'px'
+						icon.style.top = ey + 'px'
+					}, t + 100)
+				}
+
+				
+			})
+	},
+
+*/

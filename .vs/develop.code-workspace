@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"name": "xjs",
+			"path": "..\\..\\..\\xjs"
+		},
+		{
+			"name": "docier",
+			"path": "..\\..\\..\\docier"
+		},
+		{
+			"name": "hub",
+			"path": ".."
+		}
+	],
+	"settings": {}
+}

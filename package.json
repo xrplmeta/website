@@ -1,0 +1,16 @@
+{
+	"name": "@xrplmeta/hub",
+	"type": "module",
+	"version": "1.0.0",
+	"main": "blueprint.xjs",
+	"dependencies": {
+		"@xjs/core": "../../xjs/core",
+		"@xjs/responsive": "file:../../xjs/responsive",
+		"@xjs/web": "../../xjs/web",
+		"docier": "../../docier",
+		"dotenv": "^16.0.0"
+	},
+	"devDependencies": {
+		"@xjs/minify": "../../xjs/minify"
+	}
+}

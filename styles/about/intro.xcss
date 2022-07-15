@@ -1,0 +1,31 @@
+.section.intro{
+	> heading[secondary]{
+		display: flex;
+		gap: 8px;
+
+		label{
+			display: flex;
+		}
+
+		link{
+			color: var(--color-link);
+
+			&:hover{
+				text-decoration: underline;
+			}
+		}
+	}
+
+	.checklist{
+		font-family: monospace;
+		
+		> flex{
+			gap: 8px;
+			margin-bottom: 3px;
+
+			> label{
+				font-size: 13px;
+			}
+		}
+	}
+}

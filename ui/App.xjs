@@ -1,0 +1,69 @@
+import About from './about/Index.xjs'
+import Docs from './docs/Index.xjs'
+import Use from './use/Index.xjs'
+import Issuers from './issuers/Index.xjs'
+
+include '~/styles/vars.xcss'
+include '~/styles/common.xcss'
+
+
+export default x => {
+	
+
+	return x => (
+		<root class="day">
+			<title>Token & NFT Metadata on the XRPL</title>
+			<title suffix> - xrplmeta</title>
+			<router>
+				<route path="/*">
+					<header>
+						<flex>
+							<link to="/">
+								<flex class="logo">
+									<icon asset="logo"/>
+									<label>XRPL META</label>
+								</flex>
+							</link>
+							<nav>
+								<link to="/">About</link>
+								<link to="/docs">Docs</link>
+								<link to="/use">Use</link>
+								<link class="github" to="https://github.com/xrplworks/xrplmeta">
+									<icon asset="github"/>
+								</link>
+							</nav>
+						</flex>
+					</header>
+					<router>
+						<route path="/">
+							<About/>
+						</route>
+						<route path="/docs">
+							<Docs/>
+						</route>
+						<route path="/use">
+							<Use/>
+						</route>
+					</router>
+					<stack class="footer"/>
+				</route>
+				<route path="/issuers/*">
+					<header>
+						<flex>
+							<link to="/">
+								<flex class="logo">
+									<icon asset="logo"/>
+									<stack>
+										<label>XRPL META</label>
+										<label class="issuers">for Issuers</label>
+									</stack>
+								</flex>
+							</link>
+						</flex>
+					</header>
+					<Issuers/>
+				</route>
+			</router>
+		</root>
+	)
+}

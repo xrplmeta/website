@@ -1,0 +1,84 @@
+import { ParentWidth } from '@xjs/responsive'
+
+include '~/styles/fx/study.xcss'
+
+
+export default x => {
+	function drawConnections(){
+		let bounds = x.dom.getBoundingClientRect()
+		let svg = x.dom.querySelector('svg')
+		let points = x.dom.querySelectorAll('.point')
+		let boxes = x.dom.querySelectorAll('.structure > div')
+		let lines = []
+
+		svg.setAttribute('width', bounds.width)
+		svg.setAttribute('height', bounds.height)
+
+		for(let i=0; i<points.length; i++){
+			let pb = points[i].getBoundingClientRect()
+			let bb = boxes[i].getBoundingClientRect()
+			let x1 = pb.left + pb.width/2 - bounds.left
+			let y1 = pb.top + pb.height/2 - bounds.top
+			let x2 = bb.left + bb.width/2 - bounds.left
+			let y2 = bb.top + bb.height/2 - bounds.top
+
+			x2 -= (x2 - x1) * 0.1
+			y2 -= (y2 - y1) * 0.1
+
+			lines.push(`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#777777" stroke-dasharray="2,2"/>`)
+		}
+
+		svg.innerHTML = lines.join('')
+	}
+
+	return x => (
+		<ParentWidth onchange={drawConnections}>
+			<absolute class="study">
+				<stack class="point">
+					<label>Icon</label>
+					<label>source: xumm</label>
+				</stack>
+				<stack class="point">
+					<label>Token Name</label>
+					<label>source: xumm</label>
+				</stack>
+				<stack class="point">
+					<label>Issuer Name</label>
+					<label>source: bithomp</label>
+				</stack>
+				<stack class="point">
+					<label>Trusted</label>
+					<label>source: xumm</label>
+				</stack>
+				<stack class="point">
+					<label>Price History</label>
+					<label>source: xrpl</label>
+				</stack>
+				<stack class="point">
+					<label>Realtime Price</label>
+					<label>source: xrpl</label>
+				</stack>
+				<stack class="point">
+					<label>24H Price Change</label>
+					<label>source: xrpl</label>
+				</stack>
+				<flex>
+					<stack>
+						<label>Excerpt: USD token listing on XDEX</label>
+						<absolute class="structure">
+							<flex/>
+							<flex/>
+							<flex/>
+							<flex/>
+							<flex/>
+							<flex/>
+							<flex/>
+							<iframe src="https://xdex.com/widgets/token/USD:rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B/listing"/>
+						</absolute>
+					</stack>
+				</flex>
+				<svg/>
+			</absolute>
+		</ParentWidth>
+	)
+}
