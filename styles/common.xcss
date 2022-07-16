@@ -50,7 +50,7 @@ root > header{
 			font-size: 14px;
 			font-weight: 600;
 			text-transform: uppercase;
-			color: var(--color-creative);
+			color: var(--color-excite);
 		}
 	}
 
@@ -66,7 +66,7 @@ root > header{
 			padding: 6px 0 2px 0;
 
 			&[active]{
-				border-bottom-color: var(--color-active);
+				border-bottom-color: var(--color-prosper);
 			}
 
 			&:active{

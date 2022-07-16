@@ -20,11 +20,7 @@ absolute.hero > flex{
 
 	> stack{
 		align-items: center;
-		gap: 10px;
-
-		> flex{
-			gap: 10px;
-		}
+		gap: 4px;
 	}
 }
 
@@ -34,6 +30,16 @@ absolute.hero heading{
 	text-shadow: 0 0 9px white;
 	font-weight: 700;
 	text-align: center;
+}
+
+absolute.hero heading[secondary]{
+	font-size: 17px;
+	font-weight: 500;
+	color: var(--color-shade-000);
+	background-color: var(--color-prosper);
+	text-shadow: none;
+	padding: 4px 10px;
+	border-radius: 7px;
 }
 
 absolute.hero .icons{

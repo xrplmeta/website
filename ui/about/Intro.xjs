@@ -7,7 +7,7 @@ export default x => (
 		<heading>An Extension to the XRP Ledger</heading>
 		<text>
 			XRPL Meta provides the data that is not obtainable by the standard rippled API. 
-			It makes the data available through WebSocket and JSON RPC, just like rippled.
+			It makes the data available through a JSON REST and WebSocket API, just like rippled.
 			It connects to any number of rippled nodes and tracks updates in real time. 
 			Historical data is being backfilled.
 		</text>
@@ -64,6 +64,10 @@ export default x => (
 			<flex>
 				<label>✅</label>
 				<text>All of the above as a time series with any interval</text>
+			</flex>
+			<flex>
+				<label>✅</label>
+				<text>Token and Issuer trust level and KYC status</text>
 			</flex>
 			<flex>
 				<label>⌛</label>

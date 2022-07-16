@@ -1,14 +1,12 @@
 import Hero from '../fx/Hero.xjs'
 import Intro from './Intro.xjs'
-import Insight from './Insight.xjs'
-import Integrate from './Integrate.xjs'
+import HowToUse from './HowToUse.xjs'
 
 
 export default x => (
 	<stack class="page about">
 		<Hero/>
 		<Intro/>
-		<Insight/>
-		<Integrate/>
+		<HowToUse/>
 	</stack>
 )

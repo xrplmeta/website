@@ -8,9 +8,12 @@ export default x => (
 		<flex>
 			<stack>
 				<heading>
-					An Open Standard for Asset Metadata
+					The API for Asset Metadata
 					<br/>
-					on the XRP Ledger
+					on the XRP Ledger.
+				</heading>
+				<heading secondary>
+					Free and Decentralized.
 				</heading>
 			</stack>
 		</flex>
@@ -25,7 +28,7 @@ const Icons = x => {
 	let icons
 	let last
 	let spawn
-	let interval = 170
+	let interval = 250
 	let presim = 10000
 	let index = 0
 	let stage = []
@@ -45,7 +48,7 @@ const Icons = x => {
 
 	function tick(){
 		let now = performance.now()
-		let delta = Math.min(100, now - last)
+		let delta = Math.min(100, now - last) * 3
 
 		step(delta)
 		render(delta)

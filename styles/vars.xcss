@@ -7,14 +7,14 @@ root.day{
 	--color-shade-200: #cfcfcf;
 	--color-content: #111;
 	--color-hint: #aaa;
-	--color-link: dodgerblue;
-	--color-active: dodgerblue;
+	--color-trust: dodgerblue;
 	--color-inset: #eaedf1;
 	--color-guide: #cdd3db;
-	--color-prosper: #05b870;
+	--color-prosper: #00d26a;
 	--color-warn: #ff8d00;
-	--color-creative: #ff135c;
+	--color-excite: #ff135c;
+	--color-link: var(--color-prosper);
 	
 
-	--page-width: 800px;
+	--page-width: 810px;
 }
