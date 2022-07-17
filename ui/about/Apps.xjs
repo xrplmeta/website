@@ -1,0 +1,31 @@
+
+include '~/styles/about/apps.xcss'
+
+
+export default x => (
+	<stack class="section page-width apps">
+		<heading>Who is using it</heading>
+		<flex class="listings">
+			<link to="https://xumm.app" target="_blank">
+				<stack>
+					<icon asset="xumm"/>
+					<flex>
+						<label class="name">XUMM</label>
+						<icon asset="external"/>
+					</flex>
+					<label class="desc">Mobile Wallet</label>
+				</stack>
+			</link>
+			<link to="https://xdex.com" target="_blank">
+				<stack>
+					<icon asset="xdex"/>
+					<flex>
+						<label class="name">XDEX</label>
+						<icon asset="external"/>
+					</flex>
+					<label class="desc">Trading Platform</label>
+				</stack>
+			</link>
+		</flex>
+	</stack>
+)
