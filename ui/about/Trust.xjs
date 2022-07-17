@@ -63,8 +63,15 @@ export default x => (
 		</table>
 		<heading secondary>Auxlists</heading>
 		<text>
-			The way trust level 2 and 3 are established is through Auxiliary Token Lists (Auxlists).
-			These lists can be published by anyone, and are automatically scraped by XRPL Meta.
+			<span>
+				The way trust level 2 and 3 are established is through Auxiliary Token Lists (Auxlists).
+				These lists can be published by anyone, and are automatically scraped by XRPL Meta.
+				However, only the lists of trusted publishers will have the ability set the trust level.
+				All lists are expected to follow the
+			</span>
+			<span> </span>
+			<link to="https://github.com/XRPLF/XRPL-Standards/discussions/71">XLS-26 Standard</link>
+			<span>.</span>
 		</text>
 	</stack>
 )
