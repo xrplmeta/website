@@ -1,4 +1,4 @@
-import { Endpoint } from 'docier/rest'
+import { ExampleRequest } from 'docier/rest'
 import { rest } from '../../defs/apis.js'
 
 
@@ -10,7 +10,6 @@ export default x => (
 		<heading>How to use it</heading>
 		<text>
 			<span>
-				Using XRPL Meta in your project is easy. 
 				Simply call the desired API endpoint by either using HTTP GET, 
 				or establish a WebSocket connection for high frequency / high traffic requests.
 				All available methods are explained in full detail in the
@@ -21,7 +20,7 @@ export default x => (
 		</text>
 		<heading secondary>Example Request</heading>
 		<stack class="example-request">
-			<Endpoint {...rest[1]}/>
+			<ExampleRequest {...rest[1]} path="/token/USD:rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"/>
 		</stack>
 	</stack>
 )

@@ -1,7 +1,0 @@
-.section.integrate{
-	.button{
-		justify-content: center;
-		max-width: 190px;
-		margin-top: 20px;
-	}
-}

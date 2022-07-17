@@ -28,7 +28,7 @@ const Icons = x => {
 	let icons
 	let last
 	let spawn
-	let interval = 250
+	let interval = 300
 	let presim = 10000
 	let index = 0
 	let stage = []

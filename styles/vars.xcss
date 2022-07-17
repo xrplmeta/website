@@ -6,7 +6,7 @@ root.day{
 	--color-shade-100: #eeeeee;
 	--color-shade-200: #cfcfcf;
 	--color-content: #111;
-	--color-hint: #aaa;
+	--color-hint: #646a72;
 	--color-trust: dodgerblue;
 	--color-inset: #eaedf1;
 	--color-guide: #cdd3db;

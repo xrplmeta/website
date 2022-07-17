@@ -1,0 +1,23 @@
+.trust{
+	table{
+		border-collapse: collapse;
+		margin-top: 20px;
+
+		th{
+			font-size: inherit;
+			font-weight: inherit;
+			color: var(--color-hint);
+		}
+
+		td, th{
+			border: solid 1px var(--color-guide);
+			background-color: var(--color-inset);
+			padding: 6px;
+		}
+
+		td:first-child{
+			text-align: center;
+			font-weight: bold;
+		}
+	}
+}

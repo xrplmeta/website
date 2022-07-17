@@ -2,11 +2,11 @@
 	"folders": [
 		{
 			"name": "xjs",
-			"path": "..\\..\\..\\xjs"
+			"path": "../../../xjs"
 		},
 		{
 			"name": "docier",
-			"path": "..\\..\\..\\docier"
+			"path": "../../../docier"
 		},
 		{
 			"name": "hub",

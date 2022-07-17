@@ -1,6 +1,7 @@
 import Hero from '../fx/Hero.xjs'
 import Intro from './Intro.xjs'
 import HowToUse from './HowToUse.xjs'
+import Trust from './Trust.xjs'
 
 
 export default x => (
@@ -8,5 +9,6 @@ export default x => (
 		<Hero/>
 		<Intro/>
 		<HowToUse/>
+		<Trust/>
 	</stack>
 )
