@@ -1,4 +1,5 @@
 import Study from '../fx/Study.xjs'
+import Notice from '../issuers/Notice.xjs'
 
 include '~/styles/about/intro.xcss'
 
@@ -12,67 +13,78 @@ export default x => (
 			Historical data is being backfilled.
 		</text>
 		<heading secondary>Available Data</heading>
-		<stack class="checklist">
-			<flex>
-				<label>✅</label>
-				<text>Complete list of all tokens on the XRPL</text>
-			</flex>
-			<flex>
-				<label>✅</label>
-				<text>Token Metadata: names, icons, descriptions, and more</text>
-			</flex>
-			<flex>
-				<label>✅</label>
-				<text>Total number of trustlines to a token at any point in time</text>
-			</flex>
-			<flex>
-				<label>✅</label>
-				<text>Total number of holders of a token at any point in time</text>
-			</flex>
-			<flex>
-				<label>✅</label>
-				<text>Total supply of a token at any point in time</text>
-			</flex>
-			<flex>
-				<label>✅</label>
-				<text>The marketcap of a token at any point in time</text>
-			</flex>
-			<flex>
-				<label>✅</label>
-				<text>The exchange rate of a token pair at any point in time</text>
-			</flex>
-			<flex>
-				<label>✅</label>
-				<text>The trading volume of a token pair for any time range</text>
-			</flex>
-			<flex>
-				<label>✅</label>
-				<text>The ledger sequence of any ledger close time</text>
-			</flex>
-			<flex>
-				<label>✅</label>
-				<text>The count of transactions and ledger objects of any ledger</text>
-			</flex>
-			<flex>
-				<label>✅</label>
-				<text>Blazingly fast account networth estimates</text>
-			</flex>
-			<flex>
-				<label>✅</label>
-				<text>Blazingly fast balance value estimates</text>
-			</flex>
-			<flex>
-				<label>✅</label>
-				<text>All of the above as a time series with any interval</text>
-			</flex>
-			<flex>
-				<label>✅</label>
-				<text>Token and Issuer trust level and KYC status</text>
-			</flex>
-			<flex>
-				<label>⌛</label>
-				<text>Experimental NFT support is coming soon!</text>
-			</flex>
-		</stack>
+		<flex class="checklist-and-notice">
+			<Checklist/>
+			<Notice/>
+		</flex>
+	</stack>
+)
+
+const Checklist = x => (
+	<stack class="checklist">
+		<flex>
+			<label>✅</label>
+			<text>Complete list of all tokens on the XRPL</text>
+		</flex>
+		<flex>
+			<label>✅</label>
+			<text>Token Metadata: names, icons, descriptions, and more</text>
+		</flex>
+		<flex>
+			<label>✅</label>
+			<text>Total number of trustlines to a token at any point in time</text>
+		</flex>
+		<flex>
+			<label>✅</label>
+			<text>Total number of holders of a token at any point in time</text>
+		</flex>
+		<flex>
+			<label>✅</label>
+			<text>Total supply of a token at any point in time</text>
+		</flex>
+		<flex>
+			<label>✅</label>
+			<text>The marketcap of a token at any point in time</text>
+		</flex>
+		<flex>
+			<label>✅</label>
+			<text>The exchange rate of a token pair at any point in time</text>
+		</flex>
+		<flex>
+			<label>✅</label>
+			<text>The trading volume of a token pair for any time range</text>
+		</flex>
+		<flex>
+			<label>✅</label>
+			<text>The ledger sequence of any ledger close time</text>
+		</flex>
+		<flex>
+			<label>✅</label>
+			<text>The count of transactions and ledger objects of any ledger</text>
+		</flex>
+		<flex>
+			<label>✅</label>
+			<text>Token whales and their balance</text>
+		</flex>
+		<flex>
+			<label>✅</label>
+			<text>Blazingly fast account networth estimates</text>
+		</flex>
+		<flex>
+			<label>✅</label>
+			<text>Blazingly fast balance value estimates</text>
+		</flex>
+		<flex>
+			<label>✅</label>
+			<text>All of the above as a time series with any interval</text>
+		</flex>
+		<flex>
+			<label>✅</label>
+			<text>Token and Issuer trust level and KYC status</text>
+		</flex>
+		<flex>
+			<label>⌛</label>
+			<text>Experimental NFT support is coming soon!</text>
+		</flex>
 	</stack>
 )

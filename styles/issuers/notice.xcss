@@ -1,0 +1,15 @@
+.for-issuers-notice{
+	border: solid 1px var(--color-excite);
+	padding: 5px;
+
+	heading{
+		font-weight: bold;
+		color: var(--color-excite);
+	}
+}
+
+.checklist-and-notice{
+	.for-issuers-notice{
+		max-width: 250px;
+	}
+}

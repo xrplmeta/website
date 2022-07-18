@@ -1,10 +1,11 @@
 export default x => (
 	<stack class="page issuers">
 		<stack class="section page-width">
-			<heading>For Token Issuers, NFT minters, Creators</heading>
+			<heading>How to get your Token listed</heading>
 			<text>
 				This section is under construction and will be available shortly.
+				Many apps choose to not show untrusted tokens. 
 			</text>
 		</stack>
 	</stack>
-) 
+)
