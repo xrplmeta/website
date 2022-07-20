@@ -1,21 +1,28 @@
 .apps{
 	.listings{
 		margin-top: 15px;
-		gap: 45px;
+		gap: 32px;
 
-		stack > icon{
-			width: 100px;
-			height: 100px;
-			margin-bottom: 10px;
+		> flex{
+			gap: 20px;
+
+			> icon{
+				width: 100px;
+				height: 100px;
+				margin-top: 4px;
+			}
 		}
 
-		flex > icon{
+
+		link icon{
+			width: 16px;
 			color: var(--color-hint);
 			margin-left: 5px;
 		}
 
 		label.name{
 			font-weight: bold;
+			font-size: 21px;
 		}
 
 		label.desc{

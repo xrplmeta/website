@@ -121,10 +121,13 @@ root > .page{
 		}
 
 		> heading[secondary]{
-			font-size: 18px;
-			font-weight: 700;
 			margin-top: 32px;
 		}
+	}
+
+	heading[secondary]{
+		font-size: 18px;
+		font-weight: 700;
 	}
 
 	.page-width{

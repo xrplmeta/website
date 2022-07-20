@@ -1,25 +1,12 @@
 .section.intro{
-	> heading[secondary]{
-		display: flex;
-		gap: 8px;
-
-		label{
-			display: flex;
-		}
-
-		link{
-			color: var(--color-link);
-
-			&:hover{
-				text-decoration: underline;
-			}
-		}
+	heading[secondary]{
+		margin-bottom: 5px;
 	}
 
 	.checklist{
-		font-size: 15px;
 		line-height: 1.7;
-		
+		margin-bottom: 10px;
+
 		> flex{
 			gap: 8px;
 			margin-bottom: 3px;
@@ -33,5 +20,10 @@
 	.checklist-and-notice{
 		align-items: flex-start;
 		justify-content: space-between;
+		margin-top: 25px;
+
+		.for-issuers-notice{
+			margin-top: 30px;
+		}
 	}
 }

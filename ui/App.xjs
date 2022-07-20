@@ -59,6 +59,9 @@ export default x => {
 									</stack>
 								</flex>
 							</link>
+							<link class="back" to="/" onclick={() => x.route.back()}>
+								⬅️ Back to main site
+							</link>
 						</flex>
 					</header>
 					<Issuers/>

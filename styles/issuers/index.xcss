@@ -1,0 +1,16 @@
+.issuers{
+	link{
+		color: var(--color-excite);
+	}
+
+	.example-toml{
+		font-family: var(--font-mono);
+		border-radius: 5px;
+		background-color: var(--color-inset);
+		padding: 8px 10px;
+		margin-bottom: 10px;
+		font-size: 12px;
+		white-space: pre-wrap;
+		word-wrap: break-word;
+	}
+}

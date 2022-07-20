@@ -5,27 +5,38 @@ include '~/styles/about/apps.xcss'
 export default x => (
 	<stack class="section page-width apps">
 		<heading>Who is using it</heading>
-		<flex class="listings">
-			<link to="https://xumm.app" target="_blank">
+		<a name="apps"/>
+		<stack class="listings">
+			<flex>
+				<icon asset="xumm"/>
 				<stack>
-					<icon asset="xumm"/>
-					<flex>
-						<label class="name">XUMM</label>
-						<icon asset="external"/>
-					</flex>
 					<label class="desc">Mobile Wallet</label>
+					<link to="https://xumm.app" target="_blank">
+						<flex>
+							<label class="name">XUMM</label>
+							<icon asset="external"/>
+						</flex>
+					</link>
+					<text>
+						XUMM uses XRPL Meta for displaying token icons and for its token shortlist.
+					</text>
 				</stack>
-			</link>
-			<link to="https://xdex.com" target="_blank">
+			</flex>
+			<flex>
+				<icon asset="xdex"/>
 				<stack>
-					<icon asset="xdex"/>
-					<flex>
-						<label class="name">XDEX</label>
-						<icon asset="external"/>
-					</flex>
-					<label class="desc">Trading Platform</label>
+				<label class="desc">Trading Platform</label>
+					<link to="https://xdex.com" target="_blank">
+						<flex>
+							<label class="name">XDEX</label>
+							<icon asset="external"/>
+						</flex>
+					</link>
+					<text>
+						XDEX uses XRPL Meta for all its market, token and NFT data.
+					</text>
 				</stack>
-			</link>
-		</flex>
+			</flex>
+		</stack>
 	</stack>
 )
