@@ -55,16 +55,16 @@ export default x => (
 					<td>
 						<text>
 							Endorsed Token. 
-							Seen as a great project by trusted Auxlist publishers.
+							Seen as a great project by trusted Tokenlists publishers.
 						</text>
 					</td>
 				</tr>
 			</tbody>
 		</table>
-		<heading secondary>Auxlists</heading>
+		<heading secondary>Tokenlists</heading>
 		<text>
 			<span>
-				The way trust level 2 and 3 are established is through Auxiliary Token Lists (Auxlists).
+				The way trust level 2 and 3 are established is through Auxiliary Token Lists.
 				These lists can be published by anyone, and are automatically scraped by XRPL Meta.
 				However, only the lists of trusted publishers will have the ability set the trust level.
 				All lists are expected to follow the
