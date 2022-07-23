@@ -5,7 +5,7 @@ include '~/styles/about/apps.xcss'
 export default x => (
 	<stack class="section page-width apps">
 		<heading>Who is using it</heading>
-		<a name="apps"/>
+		<a id="apps"/>
 		<stack class="listings">
 			<flex>
 				<icon asset="xumm"/>

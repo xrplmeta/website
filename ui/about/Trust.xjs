@@ -65,8 +65,12 @@ export default x => (
 		<text>
 			<span>
 				The way trust level 2 and 3 are established is through Auxiliary Token Lists.
-				These lists can be published by anyone, and are automatically scraped by XRPL Meta.
-				However, only the lists of trusted publishers will have the ability set the trust level.
+				These lists can be published by anyone, and are automatically scraped by the
+			</span>
+			<span> </span>
+			<link to="https://github.com/xrplworks/xrplmeta">XRPL Meta Server</link>
+			<span>
+				. However, only the lists of trusted publishers have the ability set the trust level.
 				All lists are expected to follow the
 			</span>
 			<span> </span>
