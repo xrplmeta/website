@@ -131,10 +131,10 @@ const Icons = x => {
 			cont = node.dom
 			icons = []
 
-			let tokens = await client.get('/tokens', {trusted: undefined})
+			let tokens = await client.get('/tokens', {trust_levels: '1,2,3'})
 
 			for(let token of tokens){
-				let icon = token.meta.currency.icon || token.meta.issuer.icon
+				let icon = token.meta.token.icon || token.meta.issuer.icon
 
 				if(icon && !icons.includes(icon))
 					icons.push(icon)
