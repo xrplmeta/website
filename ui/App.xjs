@@ -44,6 +44,9 @@ export default x => {
 						<route path="/use">
 							<Use/>
 						</route>
+						<route path="/*" bad={true}>
+							<heading>Not Found</heading>
+						</route>
 					</router>
 					<stack class="footer"/>
 				</route>
@@ -60,7 +63,8 @@ export default x => {
 								</flex>
 							</link>
 							<link class="back" to="/" onclick={() => x.route.back()}>
-								⬅️ Back to main site
+								<icon asset="arrow-left"/>
+								<span>Back to main site</span>
 							</link>
 						</flex>
 					</header>

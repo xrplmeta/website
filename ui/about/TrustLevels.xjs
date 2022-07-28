@@ -1,0 +1,55 @@
+include '~/styles/about/trust-levels.xcss'
+
+export default x => (
+	<table class="trust-levels">
+		<thead>
+			<th>Level</th>
+			<th>Requirements</th>
+		</thead>
+		<tbody>
+			<tr>
+				<td>
+					<label>0</label>
+				</td>
+				<td>
+					<text>
+						No trust at all. 
+						Default for all automatically detected tokens. 
+					</text>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label>1</label>
+				</td>
+				<td>
+					<text>
+						Issuing account absolved Know-Your-Customer (KYC) or other identity checks.
+					</text>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label>2</label>
+				</td>
+				<td>
+					<text>
+						Manually vetted project. 
+						Trusted to not rugpull.
+					</text>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label>3</label>
+				</td>
+				<td>
+					<text>
+						Endorsed Token. 
+						Seen as a great project by trusted Tokenlists publishers.
+					</text>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+)

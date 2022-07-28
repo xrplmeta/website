@@ -1,0 +1,68 @@
+
+include '~/styles/issuers/self-publish.xcss'
+
+const exampleToml = 
+`[[ISSUERS]]
+address = "rCSCManTZ8ME9EoLrSHHYKW8PPwWMgkwr"
+name = "CasinoCoin"
+
+[[TOKENS]]
+issuer = "rCSCManTZ8ME9EoLrSHHYKW8PPwWMgkwr"
+currency = "CSC"
+name = "CasinoCoin"
+desc = "CasinoCoin (CSC) is a digital currency, developed specifically for the regulated gaming industry."
+icon = "https://xumm.app/assets/icons/currencies/ex-csc-3.png"
+
+[[TOKENS.WEBLINKS]]
+url = "https://casinocoin.im"
+type = "website"
+title = "Official Website"
+
+[[TOKENS.WEBLINKS]]
+url = "https://casinocoin.info"
+type = "website"
+title = "Token Info Dashboard"
+
+[[TOKENS.WEBLINKS]]
+url = "https://twitter.com/CasinoCoin"
+type = "socialmedia"`
+
+const exampleURL = `https://{DOMAIN}/.well-known/xrp-ledger.toml`
+const exampleURLs = 
+`https://example.com/.well-known/xrp-ledger.toml
+https://xrp.services.example.com/.well-known/xrp-ledger.toml`
+
+export default x => (
+	<stack class="section page-width">
+		<heading>Publish a xrp-ledger.toml File</heading>
+		<text>
+			You will need:
+		</text>
+		<ul>
+			<li>A web domain and a server or webspace</li>
+			<li>Signing access to your token's issuing account</li>
+		</ul>
+		<heading secondary>Step 1: Craft the xrp-ledger.toml file</heading>
+		<text>
+			<span>The file should follow the </span>
+			<link to="https://github.com/XRPLF/XRPL-Standards/discussions/71">XLS-26 Standard</link>
+			<span>. Below is an example.</span>
+		</text>
+		<pre class="example-toml">
+			{exampleToml}
+		</pre>
+		<heading secondary>Step 2: Upload the xrp-ledger.toml file</heading>
+		<text>
+			Place the file on your webserver so that it is available at the following URL:
+		</text>
+		<pre class="snippet">
+			{exampleURL}
+		</pre>
+		<text>
+			The {`{DOMAIN}`} is your domain name, including any subdomains. For example, you could serve the file from either of the following URLs:
+		</text>
+		<pre class="snippet">
+			{exampleURLs}
+		</pre>
+	</stack>
+)
