@@ -1,4 +1,17 @@
 export const schemas = {
+	basicToken: {
+		type: 'object',
+		properties: {
+			currency: {
+				type: 'string',
+				description: 'The currency code of the token. Can be HEX or UTF-8.'
+			},
+			issuer: {
+				type: 'string',
+				description: 'The issuing address of the token.'
+			}
+		}
+	},
 	serverInfo: {
 		type: 'object',
 		properties: {
@@ -712,6 +725,86 @@ export const websocket = [
 		}
 	},
 	{
+		id: 'subscribe-to-tokens',
+		title: 'Subscribe to Token Updates',
+		description: 'Sends notifications for each specified token along with the new data to the client in realtime. The server forgets about the client\'s subscription list once it disconnects.',
+		server: 'wss://s1.xrplmeta.org',
+		command: 'tokens_subscribe',
+		request: {
+			tokens: {
+				type: 'array',
+				description: 'The list of tokens to subscribe to.',
+				items: schemas.basicToken
+			},
+			include_sources: {
+				required: false,
+				type: 'boolean',
+				description: 'Wether to include the metadata sources for each field.',
+				default: false
+			},
+			include_changes: {
+				required: false,
+				type: 'boolean',
+				description: 'Wether to include the metric changes over time.',
+				default: false
+			}
+		},
+		response: {
+			type: 'object',
+			properties: {
+				subscriptions: {
+					type: 'object',
+					description: 'The current list of token subscriptions that are active.',
+					properties: {
+						token: schemas.basicToken,
+						include_sources: {
+							type: 'boolean',
+							description: 'Wether metadata sources are included for updates on this token.',
+						},
+						include_changes: {
+							type: 'boolean',
+							description: 'Wether metric changes are included for updates on this token.',
+						}
+					}
+				}
+			}
+		}
+	},
+	{
+		id: 'unsubscribe-from-tokens',
+		title: 'Unsubscribe from Token Updates',
+		description: 'Clears any previously set subscriptions to the specified tokens.',
+		server: 'wss://s1.xrplmeta.org',
+		command: 'tokens_unsubscribe',
+		request: {
+			tokens: {
+				type: 'array',
+				description: 'The list of tokens to unsubscribe from.',
+				items: schemas.basicToken
+			}
+		},
+		response: {
+			type: 'object',
+			properties: {
+				subscriptions: {
+					type: 'object',
+					description: 'The list of token subscriptions that are still active after unsubscribing.',
+					properties: {
+						token: schemas.basicToken,
+						include_sources: {
+							type: 'boolean',
+							description: 'Wether metadata sources are included for updates on this token.',
+						},
+						include_changes: {
+							type: 'boolean',
+							description: 'Wether metric changes are included for updates on this token.',
+						}
+					}
+				}
+			}
+		}
+	},
+	{
 		id: 'get-token',
 		title: 'Get Token',
 		description: 'Fetch an individual token along with a summary of its market- and metadata.',
@@ -759,16 +852,7 @@ export const websocket = [
 				required: true,
 				type: 'object',
 				description: 'An object identifying the token.',
-				properties: {
-					currency: {
-						type: 'string',
-						description: 'The currency code of the token. Can be HEX or UTF-8.'
-					},
-					issuer: {
-						type: 'string',
-						description: 'The issuing address of the token.'
-					}
-				}
+				properties: schemas.basicToken.properties
 			},
 			metric: {
 				required: true,
