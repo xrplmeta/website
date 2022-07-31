@@ -6,7 +6,7 @@ export default x => (
 			<link to="/#apps">partnering apps</link>
 			<span>, you must do the two following steps.</span>
 		</text>
-		<heading secondary>Publish a xrp-ledger.toml File</heading>
+		<heading secondary>1. Publish a xrp-ledger.toml File</heading>
 		<text>
 			<span>The </span>
 			<link to="https://xrpl.org/xrp-ledger-toml.html#xrp-ledgertoml-file">xrp-ledger.toml</link>
@@ -16,12 +16,18 @@ export default x => (
 				Any information you publish there will be shown on all partnering apps.
 			</span>
 		</text>
-		<link to="%/self-publish">Learn how to publish a xrp-ledger.toml</link>
-		<heading secondary>Become trusted</heading>
+		<link class="doc-link" to="%/self-publish">
+			<span>Learn how to publish a xrp-ledger.toml</span>
+			<icon asset="arrow-right"/>
+		</link>
+		<heading secondary>2. Become trusted</heading>
 		<text>
 			Many apps choose to not show the metadata of untrusted tokens. 
-			The way XRPL Meta establishes trust is by assinging a "trust level" to each token.
+			XRPL Meta establishes trust by assigning a "trust level" to each token.
 		</text>
-		<link to="%/become-trusted">Learn how to increase your trust level</link>
+		<link class="doc-link" to="%/become-trusted">
+			<span>Learn how to increase your trust level</span>
+			<icon asset="arrow-right"/>
+		</link>
 	</stack>
 )

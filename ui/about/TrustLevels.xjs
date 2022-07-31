@@ -46,7 +46,7 @@ export default x => (
 				<td>
 					<text>
 						Endorsed Token. 
-						Seen as a great project by trusted Tokenlists publishers.
+						Seen as a great project by trusted Tokenlist publishers.
 					</text>
 				</td>
 			</tr>

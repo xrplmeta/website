@@ -64,5 +64,9 @@ export default x => (
 		<pre class="snippet">
 			{exampleURLs}
 		</pre>
+		<heading secondary>Step 3: Set the Domain field on the issuing account</heading>
+		<text>
+			
+		</text>
 	</stack>
 )

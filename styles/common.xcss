@@ -80,6 +80,10 @@ root > header{
 			width: 24px;
 		}
 	}
+
+	link.back{
+		display: flex;
+	}
 }
 
 root > .footer{

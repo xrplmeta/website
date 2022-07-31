@@ -3,6 +3,21 @@
 		color: var(--color-excite);
 	}
 
+	link.doc-link{
+		display: flex;
+		width: min-content;
+		white-space: nowrap;
+		background-color: var(--color-excite);
+		color: var(--color-shade-000);
+		padding: 4px 8px;
+		border-radius: 8px;
+		margin-top: 10px;
+
+		&:active{
+			opacity: 0.7;
+		}
+	}
+
 	.example-toml{
 		font-family: var(--font-mono);
 		border-radius: 5px;
