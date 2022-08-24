@@ -1,4 +1,5 @@
 import { Modal } from '@xjs/modal'
+import { WindowWidth } from '@xjs/responsive'
 import About from './about/Index.xjs'
 import Docs from './docs/Index.xjs'
 import Use from './use/Index.xjs'
@@ -9,13 +10,13 @@ include '~/styles/common.xcss'
 
 
 export default x => {
-	function showSectionModal(){
+	function showSectionModal(active){
 		let modal = x.frame.overlay(x => (
 			<Modal dismissOn="outsideTap">
 				<stack class="modal">
 					<stack class="actions">
 						<flex class="button sheet verbose" onclick={() => x.route.set('/') & modal.destroy()}>
-							<icon asset="chain"/>
+							<icon asset="dot" class={active === 'developer' ? 'active' : ''}/>
 							<stack>
 								<label>For Developers</label>
 								<text>All the details on how you can integrate this API into your app or project.</text>
@@ -24,7 +25,7 @@ export default x => {
 						</flex>
 						<flex class="separator"/>
 						<flex class="button sheet verbose" onclick={() => x.route.set('/issuers') & modal.destroy()}>
-							<icon asset="signature"/>
+							<icon asset="dot" class={active === 'issuer' ? 'active' : ''}/>
 							<stack>
 								<label>For Issuers</label>
 								<text>Quick guidance on how to get your token or NFTs represented the best way possible.</text>
@@ -38,7 +39,7 @@ export default x => {
 	}
 
 	return x => (
-		<root class="day">
+		<root class="night">
 			<title>Token & NFT Metadata on the XRP Ledger</title>
 			<title suffix> - XRPL Meta</title>
 			
@@ -46,7 +47,7 @@ export default x => {
 				<flex>
 					<router>
 						<route path="/*">
-							<link onclick={showSectionModal}>
+							<link onclick={() => showSectionModal('developer')}>
 								<flex class="logo">
 									<icon asset="logo"/>
 									<stack>
@@ -58,17 +59,17 @@ export default x => {
 									</stack>
 								</flex>
 							</link>
-							<nav>
+							<MainNav>
 								<link to="/">About</link>
 								<link to="/docs">Docs</link>
 								<link to="/use">Use</link>
 								<link class="github" to="https://github.com/Mwni/xrplmeta">
 									<icon asset="github"/>
 								</link>
-							</nav>
+							</MainNav>
 						</route>
 						<route path="/issuers/*">
-							<link onclick={showSectionModal}>
+							<link onclick={() => showSectionModal('issuer')}>
 								<flex class="logo">
 									<icon asset="logo"/>
 									<stack>
@@ -80,11 +81,9 @@ export default x => {
 									</stack>
 								</flex>
 							</link>
-							<nav>
+							<MainNav>
 								<link to="/issuers">Overview</link>
-								<link to="/docs">Docs</link>
-								<link to="/use">Use</link>
-							</nav>
+							</MainNav>
 						</route>
 					</router>
 				</flex>
@@ -108,5 +107,23 @@ export default x => {
 				</route>
 			</router>
 		</root>
+	)
+}
+
+const MainNav = x => {
+
+	return x => (
+		<WindowWidth>
+			<if below={640} solo>
+				<button class="burger">
+					<icon asset="menu"/>
+				</button>
+			</if>
+			<if solo>
+				<nav>
+					{x.children}
+				</nav>
+			</if>
+		</WindowWidth>
 	)
 }

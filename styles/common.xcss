@@ -71,11 +71,22 @@ root > header{
 				}
 			}
 		}
+	}
 
+	button.burger{
+		background-color: transparent;
+		outline: none;
+		border: none;
+		padding: 10px;
+		color: var(--color-content);
 
-		
+		icon{
+			width: 27px;
+		}
 
-		
+		&:active{
+			opacity: 0.7;
+		}
 	}
 
 	nav{
@@ -145,7 +156,7 @@ root > .page{
 
 		> heading{
 			font-weight: 700;
-			font-size: 24px;
+			font-size: var(--font-size-primary);
 			margin-bottom: 8px;;
 		}
 
@@ -155,7 +166,7 @@ root > .page{
 	}
 
 	heading[secondary]{
-		font-size: 18px;
+		font-size: var(--font-size-secondary);
 		font-weight: 700;
 	}
 
@@ -170,7 +181,7 @@ root > .page{
 }
 
 .docier heading{
-	font-size: 18px;
+	font-size: var(--font-size-secondary);
 	font-weight: 700;
 	margin-top: 32px;
 }
@@ -242,7 +253,13 @@ button.sheet{
 		margin: 0 20px;
 
 		&:first-child{
-			margin-left: 0;
+			width: 16px;
+			color: var(--color-prosper);
+			opacity: 0;
+
+			&.active{
+				opacity: 1;
+			}
 		}
 
 		&:last-child{
@@ -274,12 +291,12 @@ button.sheet{
 
 .section.splash{
 	heading{
-		font-size: 42px !important;
+		font-size: var(--font-size-super) !important;
 		max-width: 600px;
 	}
 
 	heading[secondary]{
-		font-size: 27px !important;
+		font-size: var(--font-size-primary) !important;
 		color: var(--color-prosper);
 		margin-top: 0 !important;
 	}

@@ -24,67 +24,122 @@ export default x => (
 				</link>
 			</flex>
 		</stack>
-		<stack class="section page-width intro">
-			<flex class="checklist-and-notice">
-				<Checklist/>
-				<Notice/>
+		<stack class="section page-width features">
+			<flex class="grid">
+				<stack class="tile">
+				<stack>
+					<flex>
+						<icon asset="token"/>
+						<heading secondary>Token Data</heading>
+						<link to="/docs">
+							<label>Docs</label>
+							<icon asset="chevron-right"/>
+						</link>
+					</flex>
+					<stack class="checklist">
+						<flex>
+							<icon asset="tick"/>
+							<text>List of all tokens on the XRPL</text>
+						</flex>
+						<flex>
+							<icon asset="tick"/>
+							<text>Icons, Names, Descriptions</text>
+						</flex>
+						<flex>
+							<icon asset="tick"/>
+							<text>Weblinks for Infos and Community</text>
+						</flex>
+						<flex>
+							<icon asset="tick"/>
+							<text>KYC status, Trust level</text>
+						</flex>
+						<flex>
+							<icon asset="tick"/>
+							<text>Market: Price, Volume, Unique Traders, etc</text>
+						</flex>
+						<flex>
+							<icon asset="tick"/>
+							<text>Statistics: Trustlines, Supply, Whales, etc</text>
+						</flex>
+						<flex>
+							<icon asset="tick"/>
+							<text>Scam, Spam and other Warnings</text>
+						</flex>
+						<flex>
+							<icon asset="tick"/>
+							<text>Historical Statistics</text>
+						</flex>
+					</stack>
+				</stack>
+				</stack>
+				<stack class="tile">
+				<stack class="nft">
+					<flex>
+						<icon asset="cube" class="nft"/>
+						<heading secondary>NFT Data</heading>
+						<link to="/docs" disabled>
+							<label>Docs</label>
+							<icon asset="chevron-right"/>
+						</link>
+					</flex>
+					<stack class="checklist">
+						<flex>
+							<icon asset="hourglass"/>
+							<text>List of all NFTs on the XRPL</text>
+						</flex>
+						<flex>
+							<icon asset="hourglass"/>
+							<text>Full NFT Metadata</text>
+						</flex>
+						<flex>
+							<icon asset="hourglass"/>
+							<text>Content Cache and Relay</text>
+						</flex>
+						<flex>
+							<icon asset="hourglass"/>
+							<text>Current Price and active Offers</text>
+						</flex>
+						<flex>
+							<icon asset="hourglass"/>
+							<text>Listing and Sale History</text>
+						</flex>
+					</stack>
+					<text>
+						NFT Support is currently in development.
+					</text>
+				</stack>
+				</stack>
+				<stack class="tile">
+				<stack>
+					<flex>
+						<icon asset="ledger" class="ledger"/>
+						<heading secondary>Ledger Data</heading>
+						<link to="/docs">
+							<label>Docs</label>
+							<icon asset="chevron-right"/>
+						</link>
+					</flex>
+					<stack class="checklist">
+						<flex>
+							<icon asset="tick"/>
+							<text>Lookup Ledger Index by Time</text>
+						</flex>
+						<flex>
+							<icon asset="tick"/>
+							<text>Get Fees and Transaction Counts</text>
+						</flex>
+						<flex>
+							<icon asset="tick"/>
+							<text>Historical Statistics</text>
+						</flex>
+						<flex>
+							<icon asset="tick"/>
+							<text>Time Series of Statistics</text>
+						</flex>
+					</stack>
+				</stack>
+				</stack>
 			</flex>
 		</stack>
 	</>
-	
-)
-
-const Checklist = x => (
-	<stack>
-		<heading secondary>Token Data</heading>
-		<stack class="checklist">
-			<flex>
-				<label>✅</label>
-				<text>List of all tokens on the XRPL</text>
-			</flex>
-			<flex>
-				<label>✅</label>
-				<text>Icons, Names, Descriptions</text>
-			</flex>
-			<flex>
-				<label>✅</label>
-				<text>Weblinks for Infos and Community</text>
-			</flex>
-			<flex>
-				<label>✅</label>
-				<text>KYC status, Trust level</text>
-			</flex>
-			<flex>
-				<label>✅</label>
-				<text>Market: Price, Volume, Unique Traders, etc</text>
-			</flex>
-			<flex>
-				<label>✅</label>
-				<text>Statistics: Trustlines, Supply, Whales, etc</text>
-			</flex>
-			<flex>
-				<label>✅</label>
-				<text>Scam, Spam and other Warnings</text>
-			</flex>
-			<flex>
-				<label>✅</label>
-				<text>Historical Statistics</text>
-			</flex>
-		</stack>
-		<heading secondary>Ledger Data</heading>
-		<stack class="checklist">
-			<flex>
-				<label>✅</label>
-				<text>Lookup Ledger Index by Time</text>
-			</flex>
-			<flex>
-				<label>✅</label>
-				<text>Historical Statistics</text>
-			</flex>
-			<flex>
-				<label>✅</label>
-				<text>Time Series of Statistics</text>
-			</flex>
-		</stack>
-	</stack>
 )

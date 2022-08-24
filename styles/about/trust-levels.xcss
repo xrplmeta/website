@@ -17,5 +17,10 @@ table.trust-levels{
 	td:first-child{
 		text-align: center;
 		font-weight: bold;
+		color: var(--color-prosper);
+	}
+
+	tr:first-child td:first-child{
+		color: var(--color-hint);
 	}
 }

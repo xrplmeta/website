@@ -26,30 +26,95 @@
 			}
 		}
 	}
+}
 
-	
+.section.features{
+	.grid{
+		flex-direction: column;
+		align-items: stretch;
 
-	.checklist{
-		line-height: 1.7;
-		margin-bottom: 10px;
+		> .tile > stack{
+			background-color: var(--color-inset);
+			padding: 10px;
+			border-radius: 20px;
+			font-size: 14px;
+			line-height: 1.8;
+			margin-bottom: 15px;
 
-		> flex{
-			gap: 8px;
-			margin-bottom: 3px;
+			> flex{
+				gap: 10px;
+				height: 60px;
+				align-items: center;
 
-			> label{
-				font-size: 13px;
+				> icon{
+					width: 59px;
+				}
+
+				icon.nft{
+					width: 53px;
+				}
+
+				icon.ledger{
+					width: 40px;
+				}
+
+				> link{
+					color: var(--color-prosper);
+					display: flex;
+					margin-left: auto;
+					margin-right: 16px;
+
+					> icon{
+						width: 16px;
+					}
+
+					&:active{
+						opacity: 0.65;
+					}
+
+					&[disabled]{
+						opacity: 0.3;
+						color: var(--color-hint);
+					}
+				}
 			}
 		}
 	}
 
-	.checklist-and-notice{
-		align-items: flex-start;
-		justify-content: space-between;
-		margin-top: 25px;
+	.checklist{
+		icon{
+			color: var(--color-prosper);
+			width: 17px;
+			margin-right: 8px;
+		}
+	}
 
-		.for-issuers-notice{
-			margin-top: 30px;
+	.nft .checklist{
+		icon{
+			color: var(--color-warn);
+			width: 18px;
+		}
+	}
+
+	.nft > text{
+		color: var(--color-warn);
+		margin-top: 5px;
+	}
+}
+
+@media (min-width: 640px){
+	.section.features .grid{
+		flex-direction: row;
+		flex-wrap: wrap;
+		align-items: flex-start;
+		margin: -15px;
+
+		> .tile{
+			width: 50%;
+		}
+
+		> .tile > stack{
+			margin: 15px;
 		}
 	}
 }

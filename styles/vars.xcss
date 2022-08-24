@@ -1,4 +1,4 @@
-root.day{
+root.night{
 	--font-mono: "SF Mono",ui-monospace,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
 	--font-code: var(--font-mono);
 
@@ -16,5 +16,15 @@ root.day{
 	--color-link: var(--color-prosper);
 	
 
+	--font-size-super: 42px;
+	--font-size-primary: 24px;
+	--font-size-secondary: 17px;
 	--page-width: 810px;
+}
+
+@media (max-width: 639px){
+	root.night{
+		--font-size-super: 32px;
+		--font-size-primary: 21px;
+	}
 }
