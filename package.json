@@ -7,6 +7,7 @@
 		"@xjs/core": "../../xjs/core",
 		"@xjs/responsive": "file:../../xjs/responsive",
 		"@xjs/web": "../../xjs/web",
+		"@xjs/modal": "../../xjs/modal",
 		"docier": "../../docier",
 		"dotenv": "^16.0.0"
 	},

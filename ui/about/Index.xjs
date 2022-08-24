@@ -5,7 +5,7 @@ import Apps from './Apps.xjs'
 
 
 export default x => (
-	<stack class="page about">
+	<stack class="page developers about">
 		<Intro/>
 		<HowToUse/>
 		<Trust/>

@@ -1,0 +1,28 @@
+import Apps from '../common/Apps.xjs'
+
+include '~/styles/issuers/intro.xcss'
+
+
+export default x => (
+	<>
+		<stack class="section page-width splash">
+			<heading>Your Gateway to the XRP Ledger Ecosystem.</heading>
+			<heading secondary>Made for your Convenience.</heading>
+		</stack>
+		<stack class="section page-width intro">
+			<heading>Your Token: Seen Everywhere</heading>
+			<text>
+				XRPL Meta is a service that provides apps with metadata about assets on the ledger.
+				It allows token- or NFT issuers, like yourself, to self-publish details about their projects.
+				This is done in a decentralized manner. This means: you own your data.
+			</text>
+			<flex class="links">
+				
+			</flex>
+		</stack>
+		<stack class="section page-width users">
+			<heading secondary>These apps are already using it</heading>
+			<Apps/>
+		</stack>
+	</>
+)

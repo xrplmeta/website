@@ -1,16 +1,3 @@
-.section.splash{
-	heading{
-		font-size: 42px !important;
-		max-width: 600px;
-	}
-
-	heading[secondary]{
-		font-size: 27px !important;
-		color: var(--color-prosper);
-		margin-top: 0 !important;
-	}
-}
-
 .section.intro{
 	heading[secondary]{
 		margin-bottom: 5px;

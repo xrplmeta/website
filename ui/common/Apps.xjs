@@ -1,0 +1,34 @@
+export default x => (
+	<stack class="apps">
+		<flex>
+			<icon asset="xumm"/>
+			<stack>
+				<label class="desc">Mobile Wallet</label>
+				<link to="https://xumm.app" target="_blank">
+					<flex>
+						<label class="name">XUMM</label>
+						<icon asset="external"/>
+					</flex>
+				</link>
+				<text>
+					XUMM uses XRPL Meta for displaying token icons.
+				</text>
+			</stack>
+		</flex>
+		<flex>
+			<icon asset="xdex"/>
+			<stack>
+			<label class="desc">Trading Platform</label>
+				<link to="https://xdex.com" target="_blank">
+					<flex>
+						<label class="name">XDEX</label>
+						<icon asset="external"/>
+					</flex>
+				</link>
+				<text>
+					XDEX uses XRPL Meta for all its market, token and NFT data.
+				</text>
+			</stack>
+		</flex>
+	</stack>
+)

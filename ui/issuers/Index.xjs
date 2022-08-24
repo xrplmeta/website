@@ -1,19 +1,13 @@
-import Front from './Front.xjs'
-import SelfPublish from './SelfPublish.xjs'
+import Intro from './Intro.xjs'
 
 
 include '~/styles/issuers/index.xcss'
 
 
 export default x => (
-	<stack class="page issuers">
-		<router>
-			<route path="/">
-				<Front/>
-			</route>
-			<route path="/self-publish">
-				<SelfPublish/>
-			</route>
-		</router>
-	</stack>
+	<>
+		<stack class="page issuers overview">
+			<Intro/>
+		</stack>
+	</>
 )
