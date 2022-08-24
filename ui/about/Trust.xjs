@@ -19,7 +19,7 @@ export default x => (
 			<span> </span>
 			<link to="https://github.com/xrplworks/xrplmeta">XRPL Meta Server</link>
 			<span>
-				. However, only the lists of trusted publishers have the ability set the trust level.
+				. However, only the lists of trusted publishers have the ability set the trust level for any token.
 				All lists are expected to follow the
 			</span>
 			<span> </span>

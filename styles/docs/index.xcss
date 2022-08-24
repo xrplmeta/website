@@ -9,6 +9,7 @@ button.back{
 	font-size: inherit;
 	margin-top: 25px;
 	font-weight: 500;
+	color: var(--color-hint);
 
 	&:active{
 		opacity: 0.7;

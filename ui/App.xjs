@@ -28,7 +28,7 @@ export default x => {
 								<link to="/">About</link>
 								<link to="/docs">Docs</link>
 								<link to="/use">Use</link>
-								<link class="github" to="https://github.com/xrplworks/xrplmeta">
+								<link class="github" to="https://github.com/Mwni/xrplmeta">
 									<icon asset="github"/>
 								</link>
 							</nav>

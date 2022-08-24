@@ -4,12 +4,11 @@
 		gap: 32px;
 
 		> flex{
-			gap: 20px;
+			gap: 25px;
 
 			> icon{
-				width: 100px;
-				height: 100px;
-				margin-top: 4px;
+				width: 84px;
+				height: 84px;
 			}
 		}
 

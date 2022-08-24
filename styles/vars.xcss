@@ -2,15 +2,15 @@ root.day{
 	--font-mono: "SF Mono",ui-monospace,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
 	--font-code: var(--font-mono);
 
-	--color-shade-000: #f4f4f4;
-	--color-shade-100: #eeeeee;
-	--color-shade-200: #cfcfcf;
-	--color-content: #111;
-	--color-hint: #646a72;
+	--color-shade-000: #000;
+	--color-shade-100: #111;
+	--color-shade-200: #222;
+	--color-content: #fff;
+	--color-hint: #999da2;
 	--color-trust: dodgerblue;
-	--color-inset: #eaedf1;
-	--color-guide: #cdd3db;
-	--color-prosper: #00d26a;
+	--color-inset: #151616;
+	--color-guide: #222424;
+	--color-prosper: #19ff83;
 	--color-warn: #ff8d00;
 	--color-excite: #ff135c;
 	--color-link: var(--color-prosper);

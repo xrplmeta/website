@@ -1,106 +1,89 @@
-import Study from '../fx/Study.xjs'
 import Notice from '../issuers/Notice.xjs'
 
 include '~/styles/about/intro.xcss'
 
 export default x => (
-	<stack class="section page-width intro">
-		<heading>An Extension to the XRP Ledger</heading>
-		<text>
-			XRPL Meta provides the data that is not obtainable by the standard rippled API. 
-			It makes the data available through a JSON REST and WebSocket API, just like rippled.
-			It connects to any number of rippled nodes and tracks updates in real time. 
-			Historical data is being backfilled.
-		</text>
-		<flex class="checklist-and-notice">
-			<Checklist/>
-			<Notice/>
-		</flex>
-	</stack>
+	<>
+		<stack class="section page-width splash">
+			<heading>The API for Asset Metadata on the XRP Ledger.</heading>
+			<heading secondary>Free and Decentralized.</heading>
+		</stack>
+		<stack class="section page-width intro">
+			<heading>An Extension to the XRP Ledger</heading>
+			<text>
+				XRPL Meta provides the data that is not obtainable by the standard rippled API. 
+				It makes the data available through a JSON REST and WebSocket API, just like rippled.
+				It connects to any number of rippled nodes and tracks updates in real time. 
+				Historical data is being backfilled.
+			</text>
+			<flex class="links">
+				<link class="button" to="https://github.com/Mwni/xrplmeta">
+					<icon asset="github"/>
+					<label>Source Code</label>
+					<icon asset="external"/>
+				</link>
+			</flex>
+		</stack>
+		<stack class="section page-width intro">
+			<flex class="checklist-and-notice">
+				<Checklist/>
+				<Notice/>
+			</flex>
+		</stack>
+	</>
+	
 )
 
 const Checklist = x => (
 	<stack>
-		<heading secondary>Token Metadata</heading>
+		<heading secondary>Token Data</heading>
 		<stack class="checklist">
 			<flex>
 				<label>✅</label>
-				<text>Token names</text>
+				<text>List of all tokens on the XRPL</text>
 			</flex>
 			<flex>
 				<label>✅</label>
-				<text>Token icons</text>
+				<text>Icons, Names, Descriptions</text>
 			</flex>
 			<flex>
 				<label>✅</label>
-				<text>Token descriptions</text>
+				<text>Weblinks for Infos and Community</text>
 			</flex>
 			<flex>
 				<label>✅</label>
-				<text>Website, social media links</text>
+				<text>KYC status, Trust level</text>
 			</flex>
 			<flex>
 				<label>✅</label>
-				<text>KYC status</text>
+				<text>Market: Price, Volume, Unique Traders, etc</text>
 			</flex>
 			<flex>
 				<label>✅</label>
-				<text>Trust level</text>
+				<text>Statistics: Trustlines, Supply, Whales, etc</text>
 			</flex>
 			<flex>
 				<label>✅</label>
-				<text>Advisories aka blocklists</text>
+				<text>Scam, Spam and other Warnings</text>
+			</flex>
+			<flex>
+				<label>✅</label>
+				<text>Historical Statistics</text>
 			</flex>
 		</stack>
 		<heading secondary>Ledger Data</heading>
 		<stack class="checklist">
 			<flex>
 				<label>✅</label>
-				<text>Complete list of all tokens on the XRPL</text>
+				<text>Lookup Ledger Index by Time</text>
 			</flex>
 			<flex>
 				<label>✅</label>
-				<text>Token trustlines</text>
+				<text>Historical Statistics</text>
 			</flex>
 			<flex>
 				<label>✅</label>
-				<text>Token holders</text>
-			</flex>
-			<flex>
-				<label>✅</label>
-				<text>Token supply</text>
-			</flex>
-			<flex>
-				<label>✅</label>
-				<text>Token marketcap</text>
-			</flex>
-			<flex>
-				<label>✅</label>
-				<text>Token whales</text>
-			</flex>
-			<flex>
-				<label>✅</label>
-				<text>Token pair exchange rate</text>
-			</flex>
-			<flex>
-				<label>✅</label>
-				<text>Token pair trading volume</text>
-			</flex>
-			<flex>
-				<label>✅</label>
-				<text>Closed ledgers by time</text>
-			</flex>
-			<flex>
-				<label>✅</label>
-				<text>Historical ledger statistics</text>
-			</flex>
-			<flex>
-				<label>✅</label>
-				<text>Fast networth estimates</text>
-			</flex>
-			<flex>
-				<label>✅</label>
-				<text>All of above as time series</text>
+				<text>Time Series of Statistics</text>
 			</flex>
 		</stack>
 	</stack>

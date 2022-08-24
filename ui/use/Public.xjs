@@ -13,7 +13,7 @@ export default x => (
 				<icon asset="cube"/>
 				<stack>
 					<label class="domain">s1.xrplmeta.org</label>
-					<label class="history">History: last 6 months</label>
+					<label class="history">History: last 12 months</label>
 				</stack>
 			</flex>
 			<flex class="offline">

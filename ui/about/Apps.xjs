@@ -18,7 +18,7 @@ export default x => (
 						</flex>
 					</link>
 					<text>
-						XUMM uses XRPL Meta for displaying token icons and for its token shortlist.
+						XUMM uses XRPL Meta for displaying token icons.
 					</text>
 				</stack>
 			</flex>

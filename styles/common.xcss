@@ -5,7 +5,7 @@ root{
 	font-family: "Work Sans", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 	font-size: 17px;
 	color: var(--color-content);
-	line-height: 1.5;
+	line-height: 1.6;
 	touch-action: manipulation;
 }
 
@@ -38,11 +38,11 @@ root > header{
 		gap: 18px;
 
 		icon{
-			width: 42px;
+			width: 36px;
 		}
 
 		label{
-			font-size: 21px;
+			font-size: 18px;
 			font-weight: 700;
 		}
 
@@ -56,11 +56,12 @@ root > header{
 
 	nav{
 		display: flex;
-		width: 350px;
+		width: 340px;
 		justify-content: space-between;
 
 		> link{
 			text-transform: uppercase;
+			font-size: 15px;
 			font-weight: 600;
 			border-bottom: solid 4px transparent;
 			padding: 6px 0 2px 0;
