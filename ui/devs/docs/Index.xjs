@@ -4,7 +4,7 @@ import { rest, websocket } from '~/defs/apis.js'
 import Rest from './Rest.xjs'
 import WebSocket from './WebSocket.xjs'
 
-include '~/styles/docs/index.xcss'
+include '~/styles/devs/docs.xcss'
 
 
 export default x => (

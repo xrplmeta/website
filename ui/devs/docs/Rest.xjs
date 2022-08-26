@@ -1,8 +1,6 @@
 import { Operation } from 'docier/rest'
 import { rest } from '~/defs/apis.js'
 
-include '~/styles/docs/rest.xcss'
-
 export default x => (
 	<stack class="section page-width rest endpoint">
 		<heading>{x.descriptor.title}</heading>

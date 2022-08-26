@@ -1,6 +1,6 @@
 import Apps from '../common/Apps.xjs'
 
-include '~/styles/about/apps.xcss'
+include '~/styles/devs/apps.xcss'
 
 export default x => (
 	<stack class="section page-width users">

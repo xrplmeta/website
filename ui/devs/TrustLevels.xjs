@@ -1,4 +1,4 @@
-include '~/styles/about/trust-levels.xcss'
+include '~/styles/devs/trust-levels.xcss'
 
 export default x => (
 	<table class="trust-levels">

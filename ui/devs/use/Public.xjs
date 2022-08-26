@@ -1,5 +1,3 @@
-include '~/styles/use/public.xcss'
-
 export default x => (
 	<stack class="section page-width public">
 		<heading>

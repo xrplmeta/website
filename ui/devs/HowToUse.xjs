@@ -2,7 +2,7 @@ import { ExampleRequest } from 'docier/rest'
 import { rest } from '../../defs/apis.js'
 
 
-include '~/styles/about/how-to-use.xcss'
+include '~/styles/devs/how-to-use.xcss'
 
 
 export default x => (

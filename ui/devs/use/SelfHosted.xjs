@@ -1,5 +1,3 @@
-
-
 export default x => (
 	<stack class="section page-width self-hosted">
 		<heading>

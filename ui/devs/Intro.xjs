@@ -1,6 +1,6 @@
 import Notice from '../issuers/Notice.xjs'
 
-include '~/styles/about/intro.xcss'
+include '~/styles/devs/intro.xcss'
 
 export default x => (
 	<>
