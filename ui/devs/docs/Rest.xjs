@@ -1,5 +1,5 @@
 import { Operation } from 'docier/rest'
-import { rest } from '../../defs/apis.js'
+import { rest } from '~/defs/apis.js'
 
 include '~/styles/docs/rest.xcss'
 

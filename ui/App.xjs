@@ -1,9 +1,9 @@
 import { Modal } from '@xjs/modal'
 import { WindowWidth } from '@xjs/responsive'
-import About from './about/Index.xjs'
-import Docs from './docs/Index.xjs'
-import Use from './use/Index.xjs'
-import Issuers from './issuers/Index.xjs'
+import DevsIndex from './devs/Index.xjs'
+import DevsDocs from './devs/docs/Index.xjs'
+import DevsUse from './devs/use/Index.xjs'
+import IssuersIndex from './issuers/Index.xjs'
 
 include '~/styles/vars.xcss'
 include '~/styles/common.xcss'
@@ -91,16 +91,16 @@ export default x => {
 
 			<router>
 				<route path="/">
-					<About/>
+					<DevsIndex/>
 				</route>
 				<route path="/docs">
-					<Docs/>
+					<DevsDocs/>
 				</route>
 				<route path="/use">
-					<Use/>
+					<DevsUse/>
 				</route>
 				<route path="/issuers">
-					<Issuers/>
+					<IssuersIndex/>
 				</route>
 				<route path="/*" bad={true}>
 					<heading>Not Found</heading>

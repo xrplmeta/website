@@ -1,6 +1,6 @@
 import { Endpoint } from 'docier/rest'
 import { Command } from 'docier/websocket'
-import { rest, websocket } from '../../defs/apis.js'
+import { rest, websocket } from '~/defs/apis.js'
 import Rest from './Rest.xjs'
 import WebSocket from './WebSocket.xjs'
 
