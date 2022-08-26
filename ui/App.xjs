@@ -83,6 +83,7 @@ export default x => {
 							</link>
 							<MainNav>
 								<link to="/issuers">Overview</link>
+								<link to="/issuers/docs">Docs</link>
 							</MainNav>
 						</route>
 					</router>
@@ -100,6 +101,9 @@ export default x => {
 					<DevsUse/>
 				</route>
 				<route path="/issuers">
+					<IssuersIndex/>
+				</route>
+				<route path="/issuers/docs">
 					<IssuersIndex/>
 				</route>
 				<route path="/*" bad={true}>

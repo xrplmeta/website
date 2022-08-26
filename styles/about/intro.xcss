@@ -29,53 +29,65 @@
 }
 
 .section.features{
-	.grid{
-		flex-direction: column;
-		align-items: stretch;
+	.dual-col{
+		align-items: flex-start;
 
-		> .tile > stack{
-			background-color: var(--color-inset);
-			padding: 10px;
-			border-radius: 20px;
-			font-size: 14px;
-			line-height: 1.8;
-			margin-bottom: 15px;
+		> stack{
+			width: 50%;
+			box-sizing: border-box;
 
-			> flex{
-				gap: 10px;
-				height: 60px;
-				align-items: center;
+			&:nth-child(1){
+				padding-right: 9px;
+			}
+
+			&:nth-child(2){
+				padding-left: 9px;
+			}
+		}
+	}
+
+	.tile{
+		background-color: var(--color-inset);
+		padding: 10px;
+		border-radius: 20px;
+		font-size: 14px;
+		line-height: 1.8;
+		margin-bottom: 20px;
+
+		> flex{
+			gap: 10px;
+			height: 60px;
+			align-items: center;
+
+			> icon{
+				width: 59px;
+			}
+
+			icon.nft{
+				width: 53px;
+			}
+
+			icon.ledger{
+				width: 40px;
+			}
+
+			> link{
+				color: var(--color-prosper);
+				display: flex;
+				margin-left: auto;
+				margin-right: 16px;
 
 				> icon{
-					width: 59px;
+					width: 16px;
 				}
 
-				icon.nft{
-					width: 53px;
+				&:active{
+					opacity: 0.65;
 				}
 
-				icon.ledger{
-					width: 40px;
-				}
-
-				> link{
-					color: var(--color-prosper);
-					display: flex;
-					margin-left: auto;
-					margin-right: 16px;
-
-					> icon{
-						width: 16px;
-					}
-
-					&:active{
-						opacity: 0.65;
-					}
-
-					&[disabled]{
-						opacity: 0.3;
-						color: var(--color-hint);
-					}
+				&[disabled]{
+					opacity: 0.3;
+					color: var(--color-hint);
 				}
 			}
 		}
@@ -100,21 +112,33 @@
 		color: var(--color-warn);
 		margin-top: 5px;
 	}
+
+	.issuers-note{
+		heading{
+			font-size: var(--font-size-secondary);
+			font-weight: bold;
+		}
+	}
 }
 
-@media (min-width: 640px){
-	.section.features .grid{
-		flex-direction: row;
-		flex-wrap: wrap;
-		align-items: flex-start;
-		margin: -15px;
+@media (max-width: 639px){
+	.section.features{
+		.dual-col{
+			flex-direction: column;
+			width: 100%;
 
-		> .tile{
-			width: 50%;
-		}
-
-		> .tile > stack{
-			margin: 15px;
+			> stack{
+				width: 100%;
+				box-sizing: border-box;
+	
+				&:nth-child(1){
+					padding-right: 0;
+				}
+	
+				&:nth-child(2){
+					padding-left: 0;
+				}
+			}
 		}
 	}
 }
