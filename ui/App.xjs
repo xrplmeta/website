@@ -4,6 +4,8 @@ import DevsIndex from './devs/Index.xjs'
 import DevsDocs from './devs/docs/Index.xjs'
 import DevsUse from './devs/use/Index.xjs'
 import IssuersIndex from './issuers/Index.xjs'
+import IssuersDocs from './issuers/Docs.xjs'
+import IssuersFAQ from './issuers/FAQ.xjs'
 
 include '~/styles/vars.xcss'
 include '~/styles/common.xcss'
@@ -64,7 +66,7 @@ export default x => {
 								<link to="/docs">Docs</link>
 								<link to="/use">Use</link>
 								<link class="github" to="https://github.com/Mwni/xrplmeta">
-									<icon asset="github"/>
+									<icon asset="github" key="github"/>
 								</link>
 							</MainNav>
 						</route>
@@ -82,8 +84,12 @@ export default x => {
 								</flex>
 							</link>
 							<MainNav>
-								<link to="/issuers">Overview</link>
+								<link to="/issuers" strict>Overview</link>
 								<link to="/issuers/docs">Docs</link>
+								<link to="/issuers/faq">FAQ</link>
+								<link class="twitter" to="https://twitter.com/xrplworks">
+									<icon asset="twitter" key="twitter"/>
+								</link>
 							</MainNav>
 						</route>
 					</router>
@@ -104,7 +110,10 @@ export default x => {
 					<IssuersIndex/>
 				</route>
 				<route path="/issuers/docs">
-					<IssuersIndex/>
+					<IssuersDocs/>
+				</route>
+				<route path="/issuers/faq">
+					<IssuersFAQ/>
 				</route>
 				<route path="/*" bad={true}>
 					<heading>Not Found</heading>

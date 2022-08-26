@@ -3,6 +3,7 @@ import { Command } from 'docier/websocket'
 import { rest, websocket } from '~/defs/apis.js'
 import Rest from './Rest.xjs'
 import WebSocket from './WebSocket.xjs'
+import Back from '~/ui/common/Back.xjs'
 
 include '~/styles/devs/docs.xcss'
 
@@ -59,12 +60,3 @@ const Provider = x => {
 
 	return x => x.children
 }
-
-const Back = x => (
-	<stack class="page-width">
-		<button class="back" onclick={() => x.route.back({fallback: '..'})}>
-			<icon asset="arrow-left"/>
-			<label>Back to list</label>
-		</button>
-	</stack>
-)

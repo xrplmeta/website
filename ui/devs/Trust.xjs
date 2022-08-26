@@ -1,4 +1,4 @@
-import TrustLevels from './TrustLevels.xjs'
+import TrustTable from '~/ui/common/Trust.xjs'
 
 
 export default x => (
@@ -9,7 +9,7 @@ export default x => (
 			The token could be a scam, and the metadata could contain offensive or illegal material.
 			The way XRPL Meta protects from bad actors, is by assigning a trust level to each token.
 		</text>
-		<TrustLevels/>
+		<TrustTable/>
 		<heading secondary>Tokenlists</heading>
 		<text>
 			<span>

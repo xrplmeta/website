@@ -1,0 +1,28 @@
+import Back from '~/ui/common/Back.xjs'
+
+include '~/styles/issuers/docs.xcss'
+
+
+export default x => (
+	<stack class="page issuers-docs">
+		<router>
+			<route path="/">
+				<stack class="section page-width">
+					<heading>Documentation</heading>
+					<text>
+						You can find various articles below that will explain how to properly get your token, NFT or project represented.
+					</text>
+				</stack>
+				
+			</route>
+			<route path="/rest/:operation">
+				<Back/>
+				
+			</route>
+			<route path="/websocket/:operation">
+				<Back/>
+				
+			</route>
+		</router>
+	</stack>
+)

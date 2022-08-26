@@ -1,0 +1,8 @@
+export default x => (
+	<stack class="page-width">
+		<button class="back" onclick={() => x.route.back({fallback: '..'})}>
+			<icon asset="arrow-left"/>
+			<label>Back to list</label>
+		</button>
+	</stack>
+)
