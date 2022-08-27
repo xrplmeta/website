@@ -1,4 +1,5 @@
 import Back from '~/ui/common/Back.xjs'
+import SelfPublish from './articles/SelfPublish.xjs'
 
 include '~/styles/issuers/docs.xcss'
 
@@ -10,18 +11,28 @@ export default x => (
 				<stack class="section page-width">
 					<heading>Documentation</heading>
 					<text>
-						You can find various articles below that will explain how to properly get your token, NFT or project represented.
+						You can find various articles below that will explain how to properly get your token, NFT or project listed and shown on apps.
 					</text>
+					<stack class="articles">
+						<link to="%/self-publish">
+							<stack class="image">
+								<icon asset="toml" multicolor/>
+							</stack>
+							<stack class="content">
+								<heading secondary>How to publish a xrp-ledger.toml file</heading>
+								<text>
+									A three step guide on how to put metadata about your token into a .toml file,
+									publish said file and link it on the XRPL.
+								</text>
+							</stack>
+						</link>
+					</stack>
 				</stack>
 				
 			</route>
-			<route path="/rest/:operation">
+			<route path="/self-publish">
 				<Back/>
-				
-			</route>
-			<route path="/websocket/:operation">
-				<Back/>
-				
+				<SelfPublish/>
 			</route>
 		</router>
 	</stack>

@@ -48,9 +48,11 @@ export default x => (
 			<link to="https://github.com/XRPLF/XRPL-Standards/discussions/71">XLS-26 Standard</link>
 			<span>. Below is an example.</span>
 		</text>
-		<pre class="example-toml">
-			{exampleToml}
-		</pre>
+		<stack class="docier snippet">
+			<pre>
+				{exampleToml}
+			</pre>
+		</stack>
 		<heading secondary>Step 2: Upload the xrp-ledger.toml file</heading>
 		<text>
 			Place the file on your webserver so that it is available at the following URL:
@@ -66,7 +68,7 @@ export default x => (
 		</pre>
 		<heading secondary>Step 3: Set the Domain field on the issuing account</heading>
 		<text>
-			
+			[coming soon]
 		</text>
 	</stack>
 )

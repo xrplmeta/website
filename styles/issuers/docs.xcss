@@ -1,3 +1,25 @@
-.section.issuers-docs{
-	
+.issuers-docs{
+	.articles{
+		margin-top: 60px;
+
+		> link{
+			display: flex;
+			align-items: center;
+
+			> .image{
+				align-items: center;
+				justify-content: center;
+				flex-shrink: 0;
+				width: 74px;
+				height: 74px;
+				background-color: var(--color-inset);
+				border-radius: 15px;
+				margin-right: 20px;
+
+				> icon{
+					width: 40px;
+				}
+			}
+		}
+	}
 }

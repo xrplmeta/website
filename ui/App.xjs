@@ -87,7 +87,7 @@ export default x => {
 								<link to="/issuers" strict>Overview</link>
 								<link to="/issuers/docs">Docs</link>
 								<link to="/issuers/faq">FAQ</link>
-								<link class="twitter" to="https://twitter.com/xrplworks">
+								<link class="twitter" to="https://twitter.com/xrplmeta">
 									<icon asset="twitter" key="twitter"/>
 								</link>
 							</MainNav>
