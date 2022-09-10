@@ -91,7 +91,7 @@ root > header{
 
 	nav{
 		display: flex;
-		width: 340px;
+		width: 370px;
 		justify-content: space-between;
 
 		> link{

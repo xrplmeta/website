@@ -1,0 +1,61 @@
+import createSocket from '@xrplkit/socket'
+
+include '~/styles/tokens.xcss'
+
+
+
+export default x => {
+	let socket
+	let tokens
+
+	async function loadAndListen(){
+		socket = createSocket({ url: 'wss://s1.xrplmeta.org' })
+		tokens = await socket.request({
+			command: 'tokens',
+			decode_currency: true
+		})
+	}
+
+	return {
+		oncreate: async x => {
+			await loadAndListen()
+		},
+		view: x => (
+			<stack class="tokens">
+					{#if tokens}
+						<stack class="list">
+							{#for let token of tokens}
+								<Entry token={token}/>
+							{/for}
+						</stack>
+					{:else}
+						<label>Loading Tokens...</label>
+					{/if}
+			</stack>
+		)
+	}
+}
+
+const Entry = x => {
+	let token = x.attrs.token
+	let meta = token.meta
+	let metrics = token.metrics
+	let icon = meta.token.icon || meta.issuer.icon
+
+	return x => (
+		<flex class="entry">
+			{#if icon}
+				<icon src={icon}/>
+			{:else}
+				<icon class="placeholder" asset="token-placeholder"/>
+			{/if}
+			<stack class="name">
+				<label>{token.currency}</label>
+				<label>Issued by {meta.issuer.name || token.issuer}</label>
+			</stack>
+			<stack class="volume">
+				{metrics.volume_7d} XRP
+			</stack>
+		</flex>
+	)
+}

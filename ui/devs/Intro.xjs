@@ -1,5 +1,3 @@
-import Notice from '../issuers/Notice.xjs'
-
 include '~/styles/devs/intro.xcss'
 
 export default x => (

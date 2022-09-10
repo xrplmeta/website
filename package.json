@@ -5,9 +5,10 @@
 	"main": "blueprint.xjs",
 	"dependencies": {
 		"@xjs/core": "../../xjs/core",
+		"@xjs/modal": "../../xjs/modal",
 		"@xjs/responsive": "file:../../xjs/responsive",
 		"@xjs/web": "../../xjs/web",
-		"@xjs/modal": "../../xjs/modal",
+		"@xrplkit/socket": "file:../../xrplkit/socket",
 		"docier": "../../docier",
 		"dotenv": "^16.0.0"
 	},
