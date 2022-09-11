@@ -10,8 +10,7 @@ export default x => (
 		<ul>
 			<li>Node.js version 14+</li>
 			<li>NPM Package Manager</li>
-			<li>An internet connection</li>
-			<li>At least 1 GB of disk storage</li>
+			<li>At least 4 GB of disk storage</li>
 		</ul>
 		<text>
 			Run the following command to install it as a global program:
@@ -21,7 +20,7 @@ export default x => (
 		</code>
 		<text>
 			<span>You now can start your node by running the </span><code>xrplmeta</code><span> command. </span>
-			<span>Visit the </span><link to="https://github.com/xrplworks/xrplmeta">GitHub Repository</link>
+			<span>Visit the </span><link to="https://github.com/Mwni/xrplmeta">GitHub Repository</link>
 			<span> for additional instructions.</span>
 		</text>
 	</stack>
