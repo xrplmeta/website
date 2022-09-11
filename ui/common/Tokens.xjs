@@ -1,4 +1,5 @@
 import createSocket from '@xrplkit/socket'
+import { formatValue } from '@xrplkit/amount'
 
 include '~/styles/tokens.xcss'
 
@@ -41,6 +42,7 @@ const Entry = x => {
 	let meta = token.meta
 	let metrics = token.metrics
 	let icon = meta.token.icon || meta.issuer.icon
+	let formattedVolume = formatValue(metrics.volume_7d)
 
 	return x => (
 		<flex class="entry">
@@ -54,7 +56,7 @@ const Entry = x => {
 				<label>Issued by {meta.issuer.name || token.issuer}</label>
 			</stack>
 			<stack class="volume">
-				{metrics.volume_7d} XRP
+				{formattedVolume} XRP
 			</stack>
 		</flex>
 	)

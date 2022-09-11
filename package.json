@@ -8,6 +8,7 @@
 		"@xjs/modal": "../../xjs/modal",
 		"@xjs/responsive": "file:../../xjs/responsive",
 		"@xjs/web": "../../xjs/web",
+		"@xrplkit/amount": "file:../../xrplkit/amount",
 		"@xrplkit/socket": "file:../../xrplkit/socket",
 		"docier": "../../docier",
 		"dotenv": "^16.0.0"
