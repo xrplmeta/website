@@ -1,5 +1,6 @@
 import Back from '~/ui/common/Back.xjs'
 import SelfPublish from './articles/SelfPublish.xjs'
+import TrustLevel1 from './articles/TrustLevel1.xjs'
 
 include '~/styles/issuers/docs.xcss'
 
@@ -26,13 +27,41 @@ export default x => (
 								</text>
 							</stack>
 						</link>
+						<link to="%/trust-level-1">
+							<stack class="image">
+								<icon asset="trust" multicolor/>
+							</stack>
+							<stack class="content">
+								<heading secondary>How to gain Trust Level 1</heading>
+								<text>
+									A guide on how quickly gain a basic level of trust and get your
+									token's icon shown on most apps.
+								</text>
+							</stack>
+						</link>
+						<link to="%/trust-level-2-and-3">
+							<stack class="image">
+								<icon asset="supertrust" multicolor/>
+							</stack>
+							<stack class="content">
+								<heading secondary>How to gain Trust Level 2 and 3</heading>
+								<text>
+									Explanation of the special trust levels two and three, and how to
+									increase your chances of achieving them.
+								</text>
+							</stack>
+						</link>
 					</stack>
 				</stack>
 				
 			</route>
 			<route path="/self-publish">
-				<Back/>
+				<Back to="/issuers/docs"/>
 				<SelfPublish/>
+			</route>
+			<route path="/trust-level-1">
+				<Back to="/issuers/docs"/>
+				<TrustLevel1/>
 			</route>
 		</router>
 	</stack>

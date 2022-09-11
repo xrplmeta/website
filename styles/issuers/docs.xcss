@@ -5,6 +5,11 @@
 		> link{
 			display: flex;
 			align-items: center;
+			margin-bottom: 30px;
+
+			&:active{
+				opacity: 0.8;
+			}
 
 			> .image{
 				align-items: center;

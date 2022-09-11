@@ -9,7 +9,8 @@ root{
 	touch-action: manipulation;
 }
 
-text > a{
+text > link,
+footer link{
 	color: var(--color-link);
 
 	&:hover{
@@ -128,8 +129,24 @@ root > header{
 	}
 }
 
-root > .footer{
-	padding-top: 75px;
+root > footer{
+	width: 100%;
+
+	> flex{
+		justify-content: space-between;
+		font-size: 12px;
+		color: var(--color-hint);
+		max-width: var(--page-width);
+		margin: auto;
+		padding: 25px 15px 30px 15px;
+		box-sizing: border-box;
+		margin-top: 50px;
+		border-top: dashed 1px var(--color-inset);
+	}
+	
+	link{
+		color: var(--color-content) !important;
+	}
 }
 
 

@@ -1,0 +1,13 @@
+import TrustTable from '../../common/Trust.xjs'
+
+export default x => (
+	<stack class="section page-width">
+		<heading>Gain Trust Level 1</heading>
+		<text>
+			A quick way to establish basic trust amongst peers is to 
+			absolve Know-Your-Customer (KYC) and link it to your token's issuing account.
+			By putting down name and address, an issuer, like yourself, shows good faith
+			and agrees to take personal responsibility for the actions made in the project's name.
+		</text>
+	</stack>
+)

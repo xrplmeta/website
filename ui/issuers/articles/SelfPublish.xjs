@@ -32,15 +32,21 @@ const exampleURLs =
 `https://example.com/.well-known/xrp-ledger.toml
 https://xrp.services.example.com/.well-known/xrp-ledger.toml`
 
+const exampleAccountSet = `{
+    "TransactionType": "AccountSet",
+    "Account" : "ISSUING_ADDRESS_HERE",
+    "Domain": "HEX_ENCODED_DOMAIN_HERE"
+}`
+
 export default x => (
-	<stack class="section page-width">
+	<stack class="section page-width self-publish">
 		<heading>Publish a xrp-ledger.toml File</heading>
 		<text>
 			You will need:
 		</text>
 		<ul>
-			<li>A web domain and a server or webspace</li>
-			<li>Signing access to your token's issuing account</li>
+			<li>A web domain and a server or webspace with FTP access.</li>
+			<li>Signing access to your token's issuing account.</li>
 		</ul>
 		<heading secondary>Step 1: Craft the xrp-ledger.toml file</heading>
 		<text>
@@ -68,7 +74,31 @@ export default x => (
 		</pre>
 		<heading secondary>Step 3: Set the Domain field on the issuing account</heading>
 		<text>
-			[coming soon]
+			<span>To link your domain and the .toml file to your token's issuing account, its </span>
+			<link to="https://xrpl.org/accountroot.html#accountroot-fields" target="_blank">Domain field</link>
+			<span> has to point to your domain. </span>
+			<span>This can be done using the </span>
+			<link to="https://xrpl.org/accountset.html#accountset" target="_blank">AccountSet</link>
+			<span> transaction on the ledger. Below is a snippet how this transaction should look like.</span>
+		</text>
+		<stack class="docier snippet">
+			<pre>
+				{exampleAccountSet}
+			</pre>
+		</stack>
+		<text>
+			<span>For your convenience, you can use one of the following apps to set the domain field:</span>
+		</text>
+		<text>
+			<link to="https://xrpl.services">xrpl.services</link>
+			<br/>
+			<link to="https://xrptoolkit.com">xrptoolkit.com</link>
+		</text>
+		<heading secondary>What happens then</heading>
+		<text>
+			<span>Once your domain field is set, the </span>
+			<link to="https://github.com/xrplworks/xrplmeta">XRPL Meta Servers</link>
+			<span> will scrape your xrp-ledger.toml file within the next 10 minutes and update your token's data.</span>
 		</text>
 	</stack>
 )

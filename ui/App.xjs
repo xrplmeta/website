@@ -124,6 +124,27 @@ export default x => {
 					<heading>Not Found</heading>
 				</route>
 			</router>
+
+			<footer>
+				<flex>
+					<stack>
+						<text>
+							<span>Contact us on Twitter at </span>
+							<link to ="https://twitter.com/xrplmeta">@xrplmeta</link>
+							<span>.</span>
+						</text>
+						<text>
+							<span>This project is created and maintained by </span>
+							<link to ="https://twitter.com/MwniTheDev">Marc-Emanuel Otto</link>
+							<span>.</span>
+						</text>
+					</stack>
+					<stack>
+						<link to="/privacy">Privacy Policy</link>
+						<label>{new Date().getFullYear()} © XRPL META</label>
+					</stack>
+				</flex>
+			</footer>
 		</root>
 	)
 }

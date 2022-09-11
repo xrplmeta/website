@@ -1,0 +1,5 @@
+.self-publish{
+	.snippet{
+		margin: 30px 0;
+	}
+}
