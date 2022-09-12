@@ -28,7 +28,7 @@ export default x => {
 						Token
 					</stack>
 					<stack>
-						Trading Volume 7D
+						7 Day Trading Volume
 					</stack>
 					<stack>
 						Trustlines
@@ -58,14 +58,18 @@ const Entry = x => {
 
 	return x => (
 		<flex class="entry">
-			{#if icon}
-				<icon src={icon}/>
-			{:else}
-				<icon class="placeholder" asset="token-placeholder"/>
-			{/if}
+			<link to={`/tokens/${token.currency}:${token.issuer}`}>
+				{#if icon}
+					<icon class="icon" src={icon}/>
+				{:else}
+					<icon class="icon placeholder" asset="token-placeholder"/>
+				{/if}
+			</link>
 			<stack class="name">
-				<label>{token.currency}</label>
-				<label>Issued by {meta.issuer.name || token.issuer}</label>
+				<link to={`/tokens/${token.currency}:${token.issuer}`}>
+					<label>{token.currency}</label>
+					<label>Issued by {meta.issuer.name || token.issuer}</label>
+				</link>
 			</stack>
 			<stack class="volume">
 				{formattedVolume} XRP
