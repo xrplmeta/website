@@ -3,7 +3,6 @@ import { WindowWidth } from '@xjs/responsive'
 import DevsIndex from './devs/Index.xjs'
 import DevsDocs from './devs/docs/Index.xjs'
 import DevsTokens from './devs/Tokens.xjs'
-import DevsUse from './devs/use/Index.xjs'
 import IssuersIndex from './issuers/Index.xjs'
 import IssuersDocs from './issuers/Docs.xjs'
 import IssuersFAQ from './issuers/FAQ.xjs'
@@ -66,7 +65,6 @@ export default x => {
 								<link to="/">About</link>
 								<link to="/docs">Docs</link>
 								<link to="/tokens">Tokens</link>
-								<link to="/use">Use</link>
 								<link class="github" to="https://github.com/Mwni/xrplmeta">
 									<icon asset="github" key="github"/>
 								</link>
@@ -107,9 +105,6 @@ export default x => {
 				</route>
 				<route path="/tokens">
 					<DevsTokens/>
-				</route>
-				<route path="/use">
-					<DevsUse/>
 				</route>
 				<route path="/issuers">
 					<IssuersIndex/>

@@ -15,3 +15,33 @@ button.back{
 		opacity: 0.7;
 	}
 }
+
+.section.public-nodes{
+	.nodes{
+		padding: 20px 0;
+
+		> flex{
+			gap: 8px;
+			margin-bottom: 10px;
+
+			label.domain{
+				font-family: var(--font-code);
+
+			}
+
+			label.history{
+				font-size: 12px;
+				color: var(--color-hint);
+			}
+
+			&.offline{
+				opacity: 0.25;
+			}
+		}
+	}
+
+	text.hint{
+		font-size: 12px;
+		color: var(--color-hint);
+	}
+}
