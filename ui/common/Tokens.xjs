@@ -23,15 +23,26 @@ export default x => {
 		},
 		view: x => (
 			<stack class="tokens">
-					{#if tokens}
-						<stack class="list">
-							{#for let token of tokens}
-								<Entry token={token}/>
-							{/for}
-						</stack>
-					{:else}
-						<label>Loading Tokens...</label>
-					{/if}
+				<flex class="head">
+					<stack>
+						Token
+					</stack>
+					<stack>
+						Trading Volume 7D
+					</stack>
+					<stack>
+						Trustlines
+					</stack>
+				</flex>
+				{#if tokens}
+					<stack class="list">
+						{#for let token of tokens}
+							<Entry token={token}/>
+						{/for}
+					</stack>
+				{:else}
+					<label>Loading Tokens...</label>
+				{/if}
 			</stack>
 		)
 	}
@@ -43,6 +54,7 @@ const Entry = x => {
 	let metrics = token.metrics
 	let icon = meta.token.icon || meta.issuer.icon
 	let formattedVolume = formatValue(metrics.volume_7d)
+	let formattedTrustlines = metrics.trustlines.toLocaleString('en')
 
 	return x => (
 		<flex class="entry">
@@ -57,6 +69,9 @@ const Entry = x => {
 			</stack>
 			<stack class="volume">
 				{formattedVolume} XRP
+			</stack>
+			<stack class="trustlines">
+				{formattedTrustlines}
 			</stack>
 		</flex>
 	)

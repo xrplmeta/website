@@ -6,7 +6,7 @@ root.night{
 	--color-shade-100: #111;
 	--color-shade-200: #222;
 	--color-content: #fff;
-	--color-hint: #999da2;
+	--color-hint: #9ba2b0;
 	--color-trust: dodgerblue;
 	--color-inset: #151616;
 	--color-guide: #222424;

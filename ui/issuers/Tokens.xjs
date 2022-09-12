@@ -6,10 +6,8 @@ export default x => (
 		<stack class="section page-width">
 			<heading>Tokens on the XRPL</heading>
 			<text>
-				<span>Below you can browse all issued tokens that are currently on the XRP Ledger. </span>
-				<span>This list is in realtime and provided by </span>
-				<link to="/docs">our API</link>
-				<span>.</span>
+				Below you can browse all issued tokens that are currently on the XRP Ledger. 
+				Use this to look up your own token and confirm all necessary metadata is there.
 			</text>
 			<stack class="spacer"/>
 			<Tokens/>

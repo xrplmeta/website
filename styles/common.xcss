@@ -92,7 +92,7 @@ root > header{
 
 	nav{
 		display: flex;
-		width: 330px;
+		width: 370px;
 		justify-content: space-between;
 
 		> link{
@@ -383,4 +383,8 @@ stack.apps{
 			}
 		}
 	}
+}
+
+.spacer{
+	height: 30px;
 }
