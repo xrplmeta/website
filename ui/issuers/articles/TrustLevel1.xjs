@@ -1,5 +1,3 @@
-import TrustTable from '../../common/Trust.xjs'
-
 export default x => (
 	<stack class="section page-width">
 		<heading>Gain Trust Level 1</heading>
@@ -8,6 +6,28 @@ export default x => (
 			absolve Know-Your-Customer (KYC) and link it to your token's issuing account.
 			By putting down name and address, an issuer, like yourself, shows good faith
 			and agrees to take personal responsibility for the actions made in the project's name.
+		</text>
+		<stack class="spacer"/>
+		<text>
+			There are two XRPL compatible KYC providers:
+		</text>
+		<text>
+			<link to="">Xumm KYC</link>
+			<br/>
+			<link to="https://global.id">GlobaliD KYC</link>
+		</text>
+		<stack class="spacer"/>
+		<text>
+			<span>Please note however, that the GlobaliD KYC needs to be linked to your issuing account in an extra step. </span>
+			<span>This is explained in detail in the </span>
+			<link to="https://support.xumm.app/hc/en-us/articles/4403121678226">Xumm Documentation</link>
+			<span>.</span>
+		</text>
+		<heading secondary>What happens then</heading>
+		<text>
+			<span>After absolving the KYC process, it may take up to 24 hours for the </span>
+			<link to="https://github.com/xrplworks/xrplmeta">XRPL Meta Servers</link>
+			<span> to register the changes and update your trust level.</span>
 		</text>
 	</stack>
 )
