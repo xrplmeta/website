@@ -1,6 +1,7 @@
 import Back from '~/ui/common/Back.xjs'
 import SelfPublish from './articles/SelfPublish.xjs'
 import TrustLevel1 from './articles/TrustLevel1.xjs'
+import TrustLevel2And3 from './articles/TrustLevel2And3.xjs'
 
 include '~/styles/issuers/docs.xcss'
 
@@ -62,6 +63,10 @@ export default x => (
 			<route path="/trust-level-1">
 				<Back to="/issuers/docs"/>
 				<TrustLevel1/>
+			</route>
+			<route path="/trust-level-2-and-3">
+				<Back to="/issuers/docs"/>
+				<TrustLevel2And3/>
 			</route>
 		</router>
 	</stack>

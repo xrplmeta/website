@@ -1,0 +1,8 @@
+export default x => (
+	<stack class="section page-width">
+		<heading>Gain Trust Level 2 and 3</heading>
+		<text>
+			Coming soon.
+		</text>
+	</stack>
+)
