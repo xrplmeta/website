@@ -1,0 +1,12 @@
+export default x => (
+	<stack class="section page-width help">
+		<heading>Need Help?</heading>
+		<text>
+			<span>Feel free to reach out to us on Twitter at </span>
+			<link to="https://twitter.com/xrplmeta">@xrplmeta</link>
+			<span> or check out the </span>
+			<link to="/issuers/docs">Frequently Asked Questions</link>
+			<span>.</span>
+		</text>
+	</stack>
+)
