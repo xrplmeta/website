@@ -44,7 +44,7 @@ export default x => (
 				</stack>
 				<stack class="case">
 					<stack class="phone">
-						<icon asset="xumm-screen" multicolor/>
+						<icon asset="xdex-screen" multicolor/>
 					</stack>
 					<flex>
 						<icon asset="xdex"/>
@@ -59,7 +59,7 @@ export default x => (
 						</stack>
 					</flex>
 					<text>
-						XDEX uses XRPL Meta for its market data.
+						XDEX uses XRPL Meta for its token indices and market data.
 					</text>
 				</stack>
 				<stack class="case placeholder">
