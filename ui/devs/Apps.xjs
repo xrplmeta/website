@@ -42,6 +42,7 @@ export default x => (
 					<text>
 						<span>Tweet or contact us at </span>
 						<link to ="https://twitter.com/xrplmeta">@xrplmeta</link>
+						<span>.</span>
 					</text>
 				</stack>
 			</flex>

@@ -48,7 +48,7 @@
 			}
 		
 			.name label{
-				max-width: 300px;
+				max-width: 150px;
 
 				&:first-child{
 					font-size: 18px;
@@ -76,6 +76,25 @@
 				font-weight: bold;
 				flex-shrink: 0;
 				align-items: flex-end;
+			}
+		}
+	}
+
+	> .list.placeholder{
+		.entry{
+			border-bottom: solid 1px transparent;
+
+			.icon{
+				background-color: var(--color-shade-200);
+			}
+
+			.name{
+				label{
+					width: 70px;
+					height: 1.1em;
+					margin-bottom: 9px;
+					background-color: var(--color-shade-200);
+				}
 			}
 		}
 	}

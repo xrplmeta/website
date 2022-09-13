@@ -1,0 +1,20 @@
+import { formatValue } from '@xrplkit/amount'
+
+include '~/styles/tokens.xcss'
+
+
+
+export default x => {
+	
+
+	return {
+		oncreate: async x => {
+			
+		},
+		view: x => (
+			<stack class="page token">
+				<label>Coming soon.</label>
+			</stack>
+		)
+	}
+}

@@ -6,12 +6,18 @@ import DevsTokens from './devs/Tokens.xjs'
 import IssuersIndex from './issuers/Index.xjs'
 import IssuersDocs from './issuers/Docs.xjs'
 import IssuersTokens from './issuers/Tokens.xjs'
+import TokenDetails from './common/TokenDetails.xjs'
+import TokenBackend from '../model/TokenBackend.js'
 
 include '~/styles/vars.xcss'
 include '~/styles/common.xcss'
 
 
 export default x => {
+	x.tokens = TokenBackend({
+		node: 'wss://s1.xrplmeta.org'
+	})
+
 	function showSectionModal(active){
 		let modal = x.frame.overlay(x => (
 			<Modal dismissOn="outsideTap">
@@ -105,6 +111,9 @@ export default x => {
 				</route>
 				<route path="/tokens">
 					<DevsTokens/>
+				</route>
+				<route path="/tokens/:token">
+					<TokenDetails/>
 				</route>
 				<route path="/issuers">
 					<IssuersIndex/>

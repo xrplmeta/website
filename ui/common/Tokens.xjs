@@ -1,51 +1,47 @@
-import createSocket from '@xrplkit/socket'
 import { formatValue } from '@xrplkit/amount'
 
 include '~/styles/tokens.xcss'
 
 
 
-export default x => {
-	let socket
-	let tokens
-
-	async function loadAndListen(){
-		socket = createSocket({ url: 'wss://s1.xrplmeta.org' })
-		tokens = await socket.request({
-			command: 'tokens',
-			decode_currency: true
-		})
-	}
-
-	return {
-		oncreate: async x => {
-			await loadAndListen()
-		},
-		view: x => (
-			<stack class="tokens">
-				<flex class="head">
-					<stack>
-						Token
-					</stack>
-					<stack>
-						7 Day Trading Volume
-					</stack>
-					<stack>
-						Trustlines
-					</stack>
-				</flex>
-				{#if tokens}
-					<stack class="list">
-						{#for let token of tokens}
-							<Entry token={token}/>
-						{/for}
-					</stack>
-				{:else}
-					<label>Loading Tokens...</label>
-				{/if}
-			</stack>
-		)
-	}
+export default {
+	oncreate: async x => {
+		x.tokens.events.on('update', x.redraw)
+		await x.tokens.loadPage(0)
+	},
+	onremove: x => {
+		x.tokens.events.off('update', x.redraw)
+	},
+	view: x => (
+		<stack class="tokens">
+			<flex class="head">
+				<stack>
+					Token
+				</stack>
+				<stack>
+					7 Day Trading Volume
+				</stack>
+				<stack>
+					Trustlines
+				</stack>
+			</flex>
+			{#if x.tokens.list && !x.tokens.loading}
+				<stack class="list">
+					{#for let token of x.tokens.list}
+						<Entry token={token}/>
+					{/for}
+				</stack>
+			{:else}
+				<stack class="list placeholder">
+					<EntryPlaceholder/>
+					<EntryPlaceholder/>
+					<EntryPlaceholder/>
+					<EntryPlaceholder/>
+					<EntryPlaceholder/>
+				</stack>
+			{/if}
+		</stack>
+	)
 }
 
 const Entry = x => {
@@ -68,7 +64,7 @@ const Entry = x => {
 			<stack class="name">
 				<link to={`/tokens/${token.currency}:${token.issuer}`}>
 					<label>{token.currency}</label>
-					<label>Issued by {meta.issuer.name || token.issuer}</label>
+					<label>{token.issuer}</label>
 				</link>
 			</stack>
 			<stack class="volume">
@@ -80,3 +76,19 @@ const Entry = x => {
 		</flex>
 	)
 }
+
+
+const EntryPlaceholder = x => (
+	<flex class="entry placeholder">
+		<stack class="icon"/>
+		<stack class="name">
+			<label/>
+		</stack>
+		<stack class="volume">
+			<label/>
+		</stack>
+		<stack class="trustlines">
+			<label/>
+		</stack>
+	</flex>
+)

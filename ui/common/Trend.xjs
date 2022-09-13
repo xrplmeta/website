@@ -1,0 +1,151 @@
+import { unixNow } from '@xrplkit/time'
+
+
+export default node => {
+	let { series, range } = node.attrs
+	let container
+	let canvas
+	let ctx
+	let style
+	let palette
+
+	function adjustCanvasSize(){
+		let bounds = container.getBoundingClientRect()
+		let res = window.devicePixelRatio
+		let w = bounds.width * res
+		let h = bounds.height * res
+
+		if(canvas.width === w && canvas.height === h)
+			return
+
+		canvas.width = w
+		canvas.height = h
+		canvas.style.width = `${bounds.width}px`
+		canvas.style.height = `${bounds.height}px`
+
+		draw()
+	}
+
+	function draw(){
+		let w = canvas.width
+		let h = canvas.height
+		let res = window.devicePixelRatio
+
+		ctx.clearRect(0, 0, w, h)
+
+	
+		let now = unixNow()
+		let points = series.gapless(-range)
+			.map(p => ({t: p.t, v: parseFloat(p.v)}))
+
+		let firstPoint = series.at(-range)
+		let lastPoint = points[points.length-1]
+		let dir
+
+		if(points.length === 0 || !firstPoint)
+			return
+
+		if(lastPoint.v > parseFloat(firstPoint.v))
+			dir = 'up'
+		else if(parseFloat(firstPoint.v) > lastPoint.v)
+			dir = 'down'
+		else
+			dir = 'crab'
+
+		
+		let vpad = 2 * res
+		let minDate = firstPoint.t
+		let maxDate = lastPoint.t
+		let minPrice = Math.min(...points.map(p => p.v))
+		let maxPrice = Math.max(...points.map(p => p.v))
+		let maxChange = maxPrice/minPrice - 1
+		let scaleFactor = Math.max(0.2, Math.min(1, maxChange * 10))
+		let firstAnchor = null
+		let lastAnchor = null
+		let gradient = ctx.createLinearGradient(0, 0, 0, h)
+
+		gradient.addColorStop(0, palette.gradient[dir][0])
+		gradient.addColorStop(1, palette.gradient[dir][1])
+
+		ctx.lineWidth = 2 * res
+		ctx.strokeStyle = palette.stroke[dir]
+		ctx.lineJoin = 'bevel'
+		ctx.fillStyle = gradient
+		ctx.beginPath()
+
+		for(let point of points){
+			if(lastAnchor && lastAnchor.t !== point.t){
+				let x = (point.t - minDate) / (maxDate - minDate) * w
+			}
+
+			let x = (point.t - minDate) / (maxDate - minDate) * w
+			let y = ((1 - (point.v - minPrice) / (maxPrice - minPrice) - 0.5) * scaleFactor + 0.5) * (h - vpad * 2) + vpad
+
+			if(isNaN(y))
+				y = h/2
+
+
+			if(lastAnchor)
+				ctx.lineTo(x, y)
+			else
+				ctx.moveTo(x, y)
+			
+			lastAnchor = {t: point.t, x, y}
+			firstAnchor = firstAnchor || {x, y}
+		}
+
+		ctx.lineTo(w+10, lastAnchor.y)
+		ctx.lineTo(w+10, h+10)
+		ctx.lineTo(-10, h+10)
+		ctx.lineTo(-10, firstAnchor.y)
+
+		ctx.closePath()
+		ctx.stroke()
+		ctx.fill()
+
+
+	}
+
+	return {
+		oncreate: node => {
+			container = node.dom
+			style = window.getComputedStyle(container)
+			canvas = container.querySelector('canvas')
+			ctx = canvas.getContext('2d')
+			palette = {
+				stroke: {
+					up: style.getPropertyValue('--color-prosper'),
+					down: style.getPropertyValue('--color-alarm'),
+					crab: style.getPropertyValue('--color-shade-300'),
+				},
+				gradient: {
+					up: [
+						hexToRgbaString(style.getPropertyValue('--color-prosper'), 0.2), 
+						hexToRgbaString(style.getPropertyValue('--color-prosper'), 0), 
+					],
+					down: [
+						hexToRgbaString(style.getPropertyValue('--color-alarm'), 0.2), 
+						hexToRgbaString(style.getPropertyValue('--color-alarm'), 0), 
+					],
+					crab: [
+						hexToRgbaString(style.getPropertyValue('--color-shade-300'), 0.2), 
+						hexToRgbaString(style.getPropertyValue('--color-shade-300'), 0), 
+					],
+				}
+			}
+
+
+			series.on('update', draw)
+		},
+		onremove: node => {
+			series.off('update', draw)
+		},
+		view: node => (
+			<ParentWidth onchange={adjustCanvasSize}>
+				<div class="chart" style="position: relative">
+					<canvas style="position: absolute; top: 0; right: 0"/>
+				</div>
+			</ParentWidth>
+		)
+	}
+}

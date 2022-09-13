@@ -4,6 +4,7 @@
 	"version": "1.0.0",
 	"main": "blueprint.xjs",
 	"dependencies": {
+		"@mwni/events": "^1.0.0",
 		"@xjs/core": "../../xjs/core",
 		"@xjs/modal": "../../xjs/modal",
 		"@xjs/responsive": "file:../../xjs/responsive",
