@@ -1,4 +1,5 @@
 import Intro from './Intro.xjs'
+import Benefits from './Benefits.xjs'
 
 
 include '~/styles/issuers/index.xcss'
@@ -8,6 +9,7 @@ export default x => (
 	<>
 		<stack class="page issuers overview">
 			<Intro/>
+			<Benefits/>
 		</stack>
 	</>
 )

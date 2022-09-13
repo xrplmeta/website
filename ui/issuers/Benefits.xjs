@@ -1,0 +1,14 @@
+
+
+export default x => (
+	<stack class="section page-width benefits">
+		<heading>
+			<span>Less Work for You,</span>
+			<br/>
+			<span>More Clarity for Everyone</span>
+		</heading>
+		<text>
+			Currently, it is difficult to get your token represented properly in the XRPL ecosystem. To get your token's icon to be shown, you need to personally reach out to all wallet and platform vendors. These include XUMM, Bithomp, XRP Scan, XPMarket, XRPL Coins. All vendors rely on manual management of the metadata, so for any updates, you have to do the same roundtrip again.
+		</text>
+	</stack>
+)

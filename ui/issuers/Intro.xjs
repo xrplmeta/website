@@ -20,9 +20,60 @@ export default x => (
 				
 			</flex>
 		</stack>
-		<stack class="section page-width users">
-			<heading secondary>These apps are already using it</heading>
-			<Apps/>
+		<stack class="section page-width showcase">
+			<flex class="strip">
+				<stack class="case">
+					<stack class="phone">
+						<icon asset="xumm-screen" multicolor/>
+					</stack>
+					<flex>
+						<icon asset="xumm"/>
+						<stack>
+							<link to="https://xumm.app" target="_blank">
+								<flex>
+									<label class="name">Xumm</label>
+									<icon asset="external"/>
+								</flex>
+							</link>
+							<label class="desc">Mobile Wallet</label>
+						</stack>
+					</flex>
+					<text>
+						XUMM uses XRPL Meta for displaying token icons.
+					</text>
+				</stack>
+				<stack class="case">
+					<stack class="phone">
+						<icon asset="xumm-screen" multicolor/>
+					</stack>
+					<flex>
+						<icon asset="xdex"/>
+						<stack>
+							<link to="https://xdex.com" target="_blank">
+								<flex>
+									<label class="name">XDEX</label>
+									<icon asset="external"/>
+								</flex>
+							</link>
+							<label class="desc">Trading App</label>
+						</stack>
+					</flex>
+					<text>
+						XDEX uses XRPL Meta for its market data.
+					</text>
+				</stack>
+				<stack class="case placeholder">
+					<stack class="phone"/>
+					<flex>
+						<stack class="icon"/>
+						<stack>
+							<label class="name">? ? ?</label>
+							<label class="desc">&nbsp;</label>
+						</stack>
+					</flex>
+					<text>Announcement soon.</text>
+				</stack>
+			</flex>
 		</stack>
 	</>
 )
