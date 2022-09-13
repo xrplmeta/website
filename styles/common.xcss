@@ -101,6 +101,7 @@ root > footer{
 	width: 100%;
 
 	> flex{
+		gap: 20px;
 		justify-content: space-between;
 		font-size: 12px;
 		color: var(--color-hint);

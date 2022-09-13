@@ -20,11 +20,14 @@ export default x => (
 				
 			</flex>
 		</stack>
-		<stack class="section page-width showcase">
+		<stack class="section page-width showcase in-view">
 			<flex class="strip">
 				<stack class="case">
 					<stack class="phone">
-						<icon asset="xumm-screen" multicolor/>
+						<stack>
+							<icon asset="xumm-screen" multicolor/>
+							<icon asset="xumm-screen-accent" multicolor/>
+						</stack>
 					</stack>
 					<flex>
 						<icon asset="xumm"/>
@@ -44,7 +47,10 @@ export default x => (
 				</stack>
 				<stack class="case">
 					<stack class="phone">
-						<icon asset="xdex-screen" multicolor/>
+						<stack>
+							<icon asset="xdex-screen" multicolor/>
+							<icon asset="xdex-screen-accent" multicolor/>
+						</stack>
 					</stack>
 					<flex>
 						<icon asset="xdex"/>
