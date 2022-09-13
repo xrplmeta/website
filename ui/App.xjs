@@ -7,6 +7,7 @@ import IssuersIndex from './issuers/Index.xjs'
 import IssuersDocs from './issuers/Docs.xjs'
 import IssuersTokens from './issuers/Tokens.xjs'
 import TokenDetails from './common/TokenDetails.xjs'
+import Privacy from './common/Privacy.xjs'
 import TokenBackend from '../model/TokenBackend.js'
 
 include '~/styles/vars.xcss'
@@ -124,6 +125,9 @@ export default x => {
 				<route path="/issuers/tokens">
 					<IssuersTokens/>
 				</route>
+				<route path="/privacy">
+					<Privacy/>
+				</route>
 				<route path="/*" bad={true}>
 					<heading>Not Found</heading>
 				</route>
@@ -154,19 +158,37 @@ export default x => {
 }
 
 const MainNav = x => {
+	let options
 
-	return x => (
-		<WindowWidth>
-			<if below={640} solo>
-				<button class="burger">
-					<icon asset="menu"/>
-				</button>
-			</if>
-			<if solo>
-				<nav>
-					{x.children}
-				</nav>
-			</if>
-		</WindowWidth>
-	)
+	function openMobileMenu(){
+		x.frame.overlay(x => (
+			<absolute class="mobile-menu" onclick={() => x.overlay.destroy()}>
+				<stack class="backdrop"/>
+				<stack class="content">
+					<nav>
+						{options}
+					</nav>
+				</stack>
+			</absolute>
+		))
+	}
+
+	return x => {
+		options = x.children
+
+		return (
+			<WindowWidth>
+				<if below={640} solo>
+					<button class="burger" onclick={openMobileMenu}>
+						<icon asset="menu"/>
+					</button>
+				</if>
+				<if solo>
+					<nav>
+						{x.children}
+					</nav>
+				</if>
+			</WindowWidth>
+		)
+	}
 }

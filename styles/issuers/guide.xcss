@@ -1,0 +1,25 @@
+.section.guide{
+	.steps{
+		margin-top: 20px;
+
+		> flex{
+			margin-bottom: 20px;
+
+			> icon{
+				width: 40px;
+				height: 40px;
+				margin: 20px;
+			}
+		}
+
+		link{
+			display: flex;
+			flex-direction: row;
+			color: var(--color-prosper);
+
+			&:hover{
+				text-decoration: underline;
+			}
+		}
+	}
+}

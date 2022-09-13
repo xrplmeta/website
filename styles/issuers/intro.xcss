@@ -5,9 +5,15 @@
 
 	.section.showcase{
 		margin-top: 0;
+		padding: 0 !important;
+		width: 100%;
+		overflow-x: auto;
+		overflow-y: hidden;
+		margin-top: -15px;
 
 		> .strip{
 			align-items: flex-start;
+			padding: 20px 15px;
 		}
 	}
 
