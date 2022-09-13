@@ -325,36 +325,6 @@ button.sheet{
 	}
 }
 
-stack.apps{
-	margin-top: 15px;
-	gap: 32px;
-
-	> flex{
-		gap: 25px;
-
-		> icon{
-			width: 84px;
-			height: 84px;
-		}
-	}
-
-	link icon{
-		width: 16px;
-		color: var(--color-hint);
-		margin-left: 5px;
-	}
-
-	label.name{
-		font-weight: bold;
-		font-size: 21px;
-	}
-
-	label.desc{
-		font-size: 14px;
-		color: var(--color-hint);
-	}
-}
-
 .trust-table{
 	background-color: var(--color-inset);
 	padding: 10px;
