@@ -40,7 +40,7 @@ const exampleAccountSet = `{
 
 export default x => (
 	<stack class="section page-width self-publish">
-		<heading>Publish a xrp-ledger.toml File</heading>
+		<heading>Publish an xrp-ledger.toml File</heading>
 		<text>
 			You will need:
 		</text>
