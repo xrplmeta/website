@@ -21,7 +21,7 @@ export default x => (
 								<icon asset="toml" multicolor/>
 							</stack>
 							<stack class="content">
-								<heading secondary>How to publish a xrp-ledger.toml file</heading>
+								<heading secondary>How to publish an xrp-ledger.toml file</heading>
 								<text>
 									A three step guide on how to put metadata about your token into a .toml file,
 									publish said file and link it on the XRPL.
