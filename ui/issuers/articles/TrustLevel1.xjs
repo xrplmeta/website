@@ -12,7 +12,7 @@ export default x => (
 			There are two XRPL compatible KYC providers:
 		</text>
 		<text>
-			<link to="">Xumm KYC</link>
+			<link to="https://support.xumm.app/hc/en-us/articles/4403121678226">Xumm KYC</link>
 			<br/>
 			<link to="https://global.id">GlobaliD KYC</link>
 		</text>
