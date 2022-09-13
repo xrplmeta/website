@@ -1,5 +1,3 @@
-
-
 export default x => (
 	<stack class="section page-width benefits">
 		<heading>
@@ -8,7 +6,12 @@ export default x => (
 			<span>More Clarity for Everyone</span>
 		</heading>
 		<text>
-			Currently, it is difficult to get your token represented properly in the XRPL ecosystem. To get your token's icon to be shown, you need to personally reach out to all wallet and platform vendors. These include XUMM, Bithomp, XRP Scan, XPMarket, XRPL Coins. All vendors rely on manual management of the metadata, so for any updates, you have to do the same roundtrip again.
+			There currently exists no standardized way of publishing 
+			icons, descriptions, weblinks and other metadata about
+			tokens on the XRPL. This project changes this.
+			By providing a uniform way of writing and reading metadata, you, the token issuer,
+			only have to publish this data once. And every app developer can be assured,
+			that the data they are using is legitimate.
 		</text>
 	</stack>
 )
