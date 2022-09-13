@@ -1,15 +1,15 @@
 import Intro from './Intro.xjs'
 import Benefits from './Benefits.xjs'
+import Guide from './Guide.xjs'
 
 
 include '~/styles/issuers/index.xcss'
 
 
 export default x => (
-	<>
-		<stack class="page issuers overview">
-			<Intro/>
-			<Benefits/>
-		</stack>
-	</>
+	<stack class="page issuers overview">
+		<Intro/>
+		<Benefits/>
+		<Guide/>
+	</stack>
 )

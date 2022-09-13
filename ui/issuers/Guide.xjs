@@ -1,0 +1,10 @@
+
+
+export default x => (
+	<stack class="section page-width guide">
+		<heading>How to Join</heading>
+		<text>
+			There are two steps to get your 
+		</text>
+	</stack>
+)
