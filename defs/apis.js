@@ -480,10 +480,15 @@ export const rest = [
 		path: '/tokens',
 		request: {
 			query: {
-				include_sources: {
+				name_like: {
+					required: false,
+					type: 'string',
+					description: 'A search term to filter the list of tokens by.'
+				},
+				expand_meta: {
 					required: false,
 					type: 'boolean',
-					description: 'Wether to include the metadata sources for each field.',
+					description: 'Wether to return the full set of metadata including sources.',
 					default: false
 				},
 				include_changes: {
@@ -533,8 +538,18 @@ export const rest = [
 			}
 		},
 		response: {
-			type: 'array',
-			items: schemas.token
+			type: 'object',
+			properties: {
+				tokens: {
+					type: 'array',
+					items: schemas.token,
+					description: 'The list of tokens.'
+				},
+				count: {
+					type: 'integer',
+					description: 'The total number of tokens that meet the query criteria.'
+				}
+			}
 		}
 	},
 	{
@@ -668,10 +683,15 @@ export const websocket = [
 		server: 'wss://s1.xrplmeta.org',
 		command: 'tokens',
 		request: {
-			include_sources: {
+			name_like: {
+				required: false,
+				type: 'string',
+				description: 'A search term to filter the list of tokens by.'
+			},
+			expand_meta: {
 				required: false,
 				type: 'boolean',
-				description: 'Wether to include the metadata sources for each field.',
+				description: 'Wether to return the full set of metadata including sources.',
 				default: false
 			},
 			include_changes: {
@@ -720,8 +740,18 @@ export const websocket = [
 			}
 		},
 		response: {
-			type: 'array',
-			items: schemas.token
+			type: 'object',
+			properties: {
+				tokens: {
+					type: 'array',
+					items: schemas.token,
+					description: 'The list of tokens.'
+				},
+				count: {
+					type: 'integer',
+					description: 'The total number of tokens that meet the query criteria.'
+				}
+			}
 		}
 	},
 	{
@@ -736,10 +766,10 @@ export const websocket = [
 				description: 'The list of tokens to subscribe to.',
 				items: schemas.basicToken
 			},
-			include_sources: {
+			expand_meta: {
 				required: false,
 				type: 'boolean',
-				description: 'Wether to include the metadata sources for each field.',
+				description: 'Wether to return the full set of metadata including sources.',
 				default: false
 			},
 			include_changes: {
@@ -757,9 +787,9 @@ export const websocket = [
 					description: 'The current list of token subscriptions that are active.',
 					properties: {
 						token: schemas.basicToken,
-						include_sources: {
+						expand_meta: {
 							type: 'boolean',
-							description: 'Wether metadata sources are included for updates on this token.',
+							description: 'Wether the full metadata is returned for updates on this token.',
 						},
 						include_changes: {
 							type: 'boolean',
@@ -791,9 +821,9 @@ export const websocket = [
 					description: 'The list of token subscriptions that are still active after unsubscribing.',
 					properties: {
 						token: schemas.basicToken,
-						include_sources: {
+						expand_meta: {
 							type: 'boolean',
-							description: 'Wether metadata sources are included for updates on this token.',
+							description: 'Wether the full metadata is returned for updates on this token.',
 						},
 						include_changes: {
 							type: 'boolean',
