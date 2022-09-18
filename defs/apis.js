@@ -513,7 +513,7 @@ export const rest = [
 					],
 					default: 'trustlines',
 				},
-				trust_levels: {
+				trust_level: {
 					required: false,
 					type: 'array',
 					description: 'Only return tokens having a trust level that is in this list.',
@@ -716,7 +716,7 @@ export const websocket = [
 				],
 				default: 'trustlines',
 			},
-			trust_levels: {
+			trust_level: {
 				required: false,
 				type: 'array',
 				description: 'Only return tokens having a trust level that is in this list.',
