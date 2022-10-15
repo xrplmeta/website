@@ -1,0 +1,21 @@
+export default x => {
+	return {
+		view: x => (
+			<absolute class={`search ${x.attrs.input ? 'active' : ''}`}>
+				<flex>
+					<icon asset="search"/>
+				</flex>
+				<input 
+					type="text"
+					value={x.attrs.input || ''}
+					oninput={e => x.attrs.oninput(
+						e.target.value.length > 0 
+							? e.target.value 
+							: undefined
+					)}
+					placeholder={x.attrs.placeholder}
+				/>
+			</absolute>
+		)
+	}
+}

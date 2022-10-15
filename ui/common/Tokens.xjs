@@ -1,4 +1,6 @@
 import { formatValue } from '@xrplkit/amount'
+import Pager from './Pager.xjs'
+import Search from './Search.xjs'
 
 include '~/styles/tokens.xcss'
 
@@ -7,13 +9,17 @@ include '~/styles/tokens.xcss'
 export default {
 	oncreate: async x => {
 		x.tokens.events.on('update', x.redraw)
-		await x.tokens.loadPage(0)
+		await x.tokens.load()
 	},
 	onremove: x => {
 		x.tokens.events.off('update', x.redraw)
 	},
 	view: x => (
 		<stack class="tokens">
+			<Search
+				input={x.tokens.nameFilter}
+				oninput={input => x.tokens.setNameFilter(input)}
+			/>
 			<flex class="head">
 				<stack>
 					Token
@@ -25,14 +31,24 @@ export default {
 					Trustlines
 				</stack>
 			</flex>
-			{#if x.tokens.list && !x.tokens.loading}
-				<stack class="list">
+			{#if x.tokens.list}
+				<stack class={`list ${x.tokens.loading ? `loading` : ``}`}>
 					{#for let token of x.tokens.list}
-						<Entry token={token}/>
+						<Entry token={token} key={`${token.currency}:${token.issuer}`}/>
 					{/for}
 				</stack>
+				{#if x.tokens.pages > 1}
+					<Pager
+						page={x.tokens.page}
+						pages={x.tokens.pages}
+						onpage={page => x.tokens.setPage(page) & window.scrollTo(0, 100)}
+					/>
+				{/if}
 			{:else}
 				<stack class="list placeholder">
+					<EntryPlaceholder/>
+					<EntryPlaceholder/>
+					<EntryPlaceholder/>
 					<EntryPlaceholder/>
 					<EntryPlaceholder/>
 					<EntryPlaceholder/>
