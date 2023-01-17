@@ -156,6 +156,16 @@ export const schemas = {
 								type: 'int',
 								description: 'The trust level of this token. Values range between 0 - 3.'
 							},
+							asset_class: {
+								type: 'string',
+								description: 'The class of the underlying asset this token (IOU) represents.',
+								enum: [
+									'fiat',
+									'commodity',
+									'equity',
+									'cryptocurrency'
+								]
+							},
 							weblinks: {
 								type: 'array',
 								description: 'A list of websites associated with this token.',
