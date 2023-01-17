@@ -281,6 +281,30 @@ export const schemas = {
 						type: 'string',
 						description: 'The current price of the token in XRP represented as decimal string.'
 					},
+					volume_24h: {
+						type: 'string',
+						description: 'The aggregated trading volume of the last 24 hours in XRP represented as decimal string.'
+					},
+					volume_7d: {
+						type: 'string',
+						description: 'The aggregated trading volume of the last 7 days in XRP represented as decimal string.'
+					},
+					exchanges_24h: {
+						type: 'int',
+						description: 'The number of trades that occured in the last 24 hours.'
+					},
+					exchanges_7d: {
+						type: 'int',
+						description: 'The number of trades that occured in the last 7 days.'
+					},
+					takers_24h: {
+						type: 'int',
+						description: 'The number of unique offer book taker accounts in the last 24 hours.'
+					},
+					takers_7d: {
+						type: 'int',
+						description: 'The number of unique offer book taker accounts in the last 7 days.'
+					},
 					changes: {
 						type: 'object',
 						description: 'The changes of all metrics over time. Only present if "include_changes" is set to true.',
