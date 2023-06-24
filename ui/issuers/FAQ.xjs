@@ -1,8 +1,0 @@
-include '~/styles/issuers/faq.xcss'
-
-
-export default x => (
-	<stack class="section page-width issuers-faq">
-		<heading>Coming Soon</heading>
-	</stack>
-)

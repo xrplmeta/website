@@ -1,9 +1,0 @@
-import { Operation } from 'docier/rest'
-import { rest } from '~/defs/apis.js'
-
-export default x => (
-	<stack class="section page-width rest endpoint">
-		<heading>{x.descriptor.title}</heading>
-		<Operation {...x.descriptor}/>
-	</stack>
-)

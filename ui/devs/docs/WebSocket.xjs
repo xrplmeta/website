@@ -1,9 +1,0 @@
-import { Procedure } from 'docier/websocket'
-import { rest } from '~/defs/apis.js'
-
-export default x => (
-	<stack class="section page-width rest endpoint">
-		<heading>{x.descriptor.title}</heading>
-		<Procedure {...x.descriptor}/>
-	</stack>
-)
