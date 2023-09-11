@@ -1,20 +1,37 @@
 {
 	"name": "@xrplmeta/hub",
 	"type": "module",
-	"version": "1.0.0",
-	"main": "blueprint.xjs",
 	"dependencies": {
-		"@mwni/events": "^1.0.0",
-		"@xjs/core": "../../xjs/core",
-		"@xjs/modal": "../../xjs/modal",
-		"@xjs/responsive": "file:../../xjs/responsive",
-		"@xjs/web": "../../xjs/web",
-		"@xrplkit/amount": "file:../../xrplkit/amount",
-		"@xrplkit/socket": "file:../../xrplkit/socket",
-		"docier": "../../docier",
-		"dotenv": "^16.0.0"
+		"@architekt/html": "1.0.0",
+		"@architekt/router": "1.0.0",
+		"@architekt/ui": "1.0.0",
+		"@architekt/web": "1.0.0",
+		"@mwni/events": "^2.0.1",
+		"docier": "1.0.0",
+		"dotenv": "^16.0.3",
+		"koa": "^2.13.4"
 	},
 	"devDependencies": {
-		"@xjs/minify": "../../xjs/minify"
+		"@architekt/cli": "1.0.0",
+		"@architekt/minify": "1.0.0",
+		"@architekt/tailwind": "1.0.0"
+	},
+	"scripts": {
+		"dev": "node ./node_modules/@architekt/cli/cli.js dev",
+		"dist": "node ./node_modules/@architekt/cli/cli.js dist"
+	},
+	"architekt": {
+		"web": {
+			"appComponent": "./ui/App.js",
+			"server": "./server/server.js",
+			"plugins": [
+				"@architekt/tailwind"
+			],
+			"dist": {
+				"plugins": [
+					"@architekt/tailwind"
+				]
+			}
+		}
 	}
 }
