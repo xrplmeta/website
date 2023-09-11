@@ -1,0 +1,134 @@
+.header{
+	width: 100%;
+
+	> .content{
+		width: 100%;
+		justify-content: space-between;
+		max-width: var(--page-width);
+		margin: auto;
+		padding: 25px;
+		box-sizing: border-box;
+
+		.brand{
+			width: 240px;
+			gap: 20px;
+			align-items: center;
+
+			.logo{
+				width: 33px;
+			}
+
+			.name{
+				font-size: 18px;
+				font-weight: 700;
+			}
+		}
+
+		> link{
+			cursor: pointer;
+
+			&:active{
+				opacity: 0.75;
+			}
+		}
+
+		.nav{
+			width: 100%;
+			max-width: 620p;
+			align-items: center;
+			justify-content: space-between;
+
+			> Link.simple{
+				text-transform: uppercase;
+				font-size: 14px;
+				font-weight: 600;
+				border-bottom: solid 4px transparent;
+				padding: 4px 0 2px 0;
+
+				&[active]{
+					border-bottom-color: var(--color-prosper);
+				}
+			}
+
+			> Link.multi{
+				HStack{
+					align-items: center;
+				}
+
+				Icon{
+					width: 20px;
+				}
+				
+				Text{
+					text-transform: uppercase;
+					font-size: 14px;
+					font-weight: 600;
+					border-bottom: solid 4px transparent;
+					padding: 4px 0 2px 0;
+				}
+
+				&[active] Text{
+					border-bottom-color: var(--color-prosper);
+				}
+
+				&:active{
+					opacity: 0.7;
+				}
+			}
+
+			> Link.multi{
+				HStack{
+					align-items: center;
+				}
+
+				Icon{
+					width: 20px;
+				}
+				
+				Text{
+					text-transform: uppercase;
+					font-size: 14px;
+					font-weight: 600;
+					border-bottom: solid 4px transparent;
+					padding: 4px 0 2px 0;
+				}
+
+				&[active] Text{
+					border-bottom-color: var(--color-prosper);
+				}
+
+				&:active{
+					opacity: 0.7;
+				}
+			}
+
+			WebLink{
+				Icon{
+					width: 24px;
+				}
+			}
+		}
+	}
+
+	button.burger{
+		background-color: transparent;
+		outline: none;
+		border: none;
+		padding: 10px;
+		color: var(--color-content);
+
+		icon{
+			width: 27px;
+		}
+
+		&:active{
+			opacity: 0.7;
+		}
+	}
+
+	nav{
+		display: flex;
+		width: 370px;
+		justify-content: space-between;
+	}
+}
