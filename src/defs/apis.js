@@ -1,14 +1,19 @@
 export const schemas = {
 	basicToken: {
 		type: 'object',
+		description: 'A token identifier. Specify either currency and issuer for IOUs, mptIssuanceId for MPTs, or currency \"XRP\" where XRP is allowed.',
 		properties: {
 			currency: {
 				type: 'string',
-				description: 'The currency code of the token. Can be HEX or UTF-8.'
+				description: 'The currency code of an IOU token. Can be HEX or UTF-8. Use \"XRP\" to identify XRP where allowed.'
 			},
 			issuer: {
 				type: 'string',
-				description: 'The issuing address of the token.'
+				description: 'The issuing address of an IOU token.'
+			},
+			mptIssuanceId: {
+				type: 'string',
+				description: 'The MPT issuance ID of a multi-purpose token.'
 			}
 		}
 	},
@@ -125,11 +130,20 @@ export const schemas = {
 		properties: {
 			currency: {
 				type: 'string',
-				description: 'Currency code of the token. Can be HEX or UTF-8.'
+				description: 'Currency code of the token. Can be HEX or UTF-8. Present for IOU tokens.'
 			},
 			issuer: {
 				type: 'string',
-				description: 'Issuing address of the token.'
+				description: 'Issuing address of the token. Present for IOU tokens.'
+			},
+			mpt_issuance_id: {
+				type: 'string',
+				description: 'MPT issuance ID. Present for MPT tokens.'
+			},
+			token_type: {
+				type: 'string',
+				description: 'The token type.',
+				enum: ['iou', 'mpt']
 			},
 			meta: {
 				type: 'object',
@@ -449,6 +463,100 @@ export const schemas = {
 			}
 		}
 	},
+	tokenListResponse: {
+		type: 'object',
+		properties: {
+			tokens: {
+				type: 'array',
+				items: null,
+				description: 'The list of tokens.'
+			},
+			count: {
+				type: 'integer',
+				description: 'The total number of tokens that meet the query criteria.'
+			}
+		}
+	},
+	tokenExchangesResponse: {
+		type: 'object',
+		properties: {
+			exchanges: {
+				type: 'array',
+				description: 'The matching token exchanges.',
+				items: {
+					type: 'object',
+					properties: {
+						txHash: {
+							type: 'string',
+							description: 'The transaction hash.'
+						},
+						ledgerSequence: {
+							type: 'int',
+							description: 'The ledger sequence containing the exchange.'
+						},
+						taker: {
+							type: 'string',
+							description: 'The account that took the offer.'
+						},
+						maker: {
+							type: 'string',
+							description: 'The account that created the offer.'
+						},
+						price: {
+							type: 'string',
+							description: 'The exchange price represented as decimal string.'
+						},
+						volume: {
+							type: 'string',
+							description: 'The exchanged volume represented as decimal string.'
+						}
+					}
+				}
+			},
+			marker: {
+				type: 'null',
+				description: 'Pagination marker. Currently always null.'
+			}
+		}
+	},
+	tokenHoldersResponse: {
+		type: 'object',
+		properties: {
+			totalSupply: {
+				type: 'string',
+				description: 'The total token supply at the ledger point.'
+			},
+			totalHolders: {
+				type: 'int',
+				description: 'The total number of token holders at the ledger point.'
+			},
+			holders: {
+				type: 'array',
+				description: 'The token holders page.',
+				items: {
+					type: 'object',
+					properties: {
+						account: {
+							type: 'string',
+							description: 'The holder account address.'
+						},
+						balance: {
+							type: 'string',
+							description: 'The account balance represented as decimal string.'
+						},
+						percent: {
+							type: 'number',
+							description: 'The account balance as percentage of total supply.'
+						}
+					}
+				}
+			},
+			ledgerSequence: {
+				type: 'int',
+				description: 'The ledger sequence used for this lookup.'
+			}
+		}
+	},
 	seriesPoint: {
 		type: 'object',
 		properties: {
@@ -468,13 +576,171 @@ export const schemas = {
 	}
 }
 
+schemas.tokenListResponse.properties.tokens.items = schemas.token
+
+const tokenQuery = {
+	name_like: {
+		required: false,
+		type: 'string',
+		description: 'A search term to filter the list of tokens by.'
+	},
+	expand_meta: {
+		required: false,
+		type: 'boolean',
+		description: 'Wether to return the full set of metadata including sources.',
+		default: false
+	},
+	include_sources: {
+		required: false,
+		type: 'boolean',
+		description: 'Wether to include the metadata sources for each field. Alias for expand_meta.',
+		default: false
+	},
+	include_changes: {
+		required: false,
+		type: 'boolean',
+		description: 'Wether to include the metric changes over time.',
+		default: false
+	},
+	decode_currency: {
+		required: false,
+		type: 'boolean',
+		description: 'Wether to return IOU currency codes as UTF-8 instead of HEX when possible.',
+		default: false
+	},
+	original_icons: {
+		required: false,
+		type: 'boolean',
+		description: 'Wether to return original icon URLs instead of cached XRPL Meta icon URLs.',
+		default: false
+	},
+	prefer_sources: {
+		required: false,
+		type: 'array',
+		description: 'A list of metadata sources to prefer when resolving conflicting metadata fields.',
+		items: {
+			type: 'string'
+		}
+	},
+	sort_by: {
+		required: false,
+		type: 'string',
+		description: 'The metric the returned list of tokens should be sorted by.',
+		enum: [
+			'holders',
+			'supply',
+			'marketcap',
+			'price_percent_24h',
+			'price_percent_7d',
+			'volume_24h',
+			'volume_7d',
+			'exchanges_24h',
+			'exchanges_7d',
+			'takers_24h',
+			'takers_7d',
+			'[metric]_delta_24h',
+			'[metric]_percent_24h',
+			'[metric]_delta_7d',
+			'[metric]_percent_7d',
+		],
+		default: 'holders',
+	},
+	trust_level: {
+		required: false,
+		type: 'array',
+		description: 'Only return tokens having a trust level that is in this list. REST accepts a comma-separated list.',
+		items: {
+			type: 'int'
+		},
+		default: [0, 1, 2, 3]
+	},
+	limit: {
+		required: false,
+		type: 'number',
+		description: 'Limit amount of tokens returned.',
+		default: 100,
+	},
+	offset: {
+		name: 'offset',
+		required: false,
+		type: 'number',
+		description: 'Paginate through all tokens available by incrementing the offset.',
+		default: 0,
+	}
+}
+
+const iouTokenQuery = {
+	...tokenQuery,
+	sort_by: {
+		...tokenQuery.sort_by,
+		enum: ['trustlines', ...tokenQuery.sort_by.enum],
+		default: 'trustlines'
+	}
+}
+
+const tokenOptionsQuery = {
+	expand_meta: tokenQuery.expand_meta,
+	include_sources: tokenQuery.include_sources,
+	include_changes: tokenQuery.include_changes,
+	decode_currency: tokenQuery.decode_currency,
+	original_icons: tokenQuery.original_icons,
+	prefer_sources: tokenQuery.prefer_sources
+}
+
+const rangeQuery = {
+	time_start: {
+		type: 'int',
+		description: 'A unix timestamp specifying the first data point. Negative values are interpreted as time back from now.'
+	},
+	time_end: {
+		type: 'int',
+		description: 'A unix timestamp specifying the last data point. Negative values are interpreted as time back from now.'
+	},
+	time_interval: {
+		type: 'int',
+		description: 'The time interval between data points in seconds. Required for series endpoints when using time ranges.'
+	},
+	sequence_start: {
+		type: 'int',
+		description: 'The ledger sequence specifying the first data point. Negative values are interpreted as ledgers back from current.'
+	},
+	sequence_end: {
+		type: 'int',
+		description: 'The ledger sequence specifying the last data point. Negative values are interpreted as ledgers back from current.'
+	},
+	sequence_interval: {
+		type: 'int',
+		description: 'The ledger interval between data points. Required for series endpoints when using ledger sequence ranges.'
+	}
+}
+
+const pointQuery = {
+	sequence: {
+		required: false,
+		type: 'int',
+		description: 'The ledger sequence. Optional if time is specified.',
+	},
+	time: {
+		required: false,
+		type: 'int',
+		description: 'The unix timestamp. Optional if sequence is specified.',
+	}
+}
+
+const seriesMetric = {
+	required: true,
+	type: 'string',
+	description: 'The type of metric you want to fetch. The trustlines metric is only available for IOU tokens.',
+	enum: ['price', 'trustlines', 'holders', 'marketcap', 'supply']
+}
+
 export const rest = [
 	{
 		id: 'server-info',
 		title: 'Server Info',
 		description: 'Fetch generic information about the server.',
 		server: 'https://s1.xrplmeta.org',
-		path: '/server',
+		path: '/v2/server',
 		request: {},
 		response: schemas.serverInfo
 	},
@@ -483,193 +749,139 @@ export const rest = [
 		title: 'Ledger Lookup',
 		description: 'Fetch metadata about a specific ledger.',
 		server: 'https://s1.xrplmeta.org',
-		path: '/ledger',
+		path: '/v2/ledger',
 		request: {
-			query: {
-				sequence: {
-					required: false,
-					type: 'int',
-					description: 'The ledger sequence of the ledger. Optional if time is specified.',
-				},
-				time: {
-					required: false,
-					type: 'int',
-					description: 'The unix timestamp of the ledger. Optional if sequence is specified.',
-				},
-				strict: {
-					required: false,
-					type: 'boolean',
-					description: 'If set to true, either the sequence or time parameter has to be an exact match.',
-					default: false
-				},
-			}
+			query: pointQuery
 		},
 		response: schemas.ledger
 	},
 	{
 		id: 'list-tokens',
 		title: 'List Tokens',
-		description: 'Fetch a list of tokens along with a summary of their market- and metadata.',
+		description: 'Fetch a list of IOU and MPT tokens along with a summary of their market- and metadata.',
 		server: 'https://s1.xrplmeta.org',
-		path: '/tokens',
+		path: '/v2/tokens',
 		request: {
-			query: {
-				name_like: {
-					required: false,
-					type: 'string',
-					description: 'A search term to filter the list of tokens by.'
-				},
-				expand_meta: {
-					required: false,
-					type: 'boolean',
-					description: 'Wether to return the full set of metadata including sources.',
-					default: false
-				},
-				include_changes: {
-					required: false,
-					type: 'boolean',
-					description: 'Wether to include the metric changes over time.',
-					default: false
-				},
-				sort_by: {
-					required: false,
-					type: 'string',
-					description: 'The metric the returned list of tokens should be sorted by',
-					enum: [
-						'trustlines',
-						'holders',
-						'supply',
-						'marketcap',
-						'[metric]_delta_24h',
-						'[metric]_percent_24h',
-						'[metric]_delta_7d',
-						'[metric]_percent_7d',
-					],
-					default: 'trustlines',
-				},
-				trust_level: {
-					required: false,
-					type: 'array',
-					description: 'Only return tokens having a trust level that is in this list.',
-					items: {
-						type: 'int'
-					},
-					default: [0, 1, 2, 3]
-				},
-				limit: {
-					required: false,
-					type: 'number',
-					description: 'Limit amount of tokens returned.',
-					default: 100,
-				},
-				offset: {
-					name: 'offset',
-					required: false,
-					type: 'number',
-					description: 'Paginate through all tokens available by incrementing the offset.',
-					default: 0,
-				}
-			}
+			query: tokenQuery
 		},
-		response: {
-			type: 'object',
-			properties: {
-				tokens: {
-					type: 'array',
-					items: schemas.token,
-					description: 'The list of tokens.'
-				},
-				count: {
-					type: 'integer',
-					description: 'The total number of tokens that meet the query criteria.'
-				}
-			}
-		}
+		response: schemas.tokenListResponse
+	},
+	{
+		id: 'list-ious',
+		title: 'List IOU Tokens',
+		description: 'Fetch a list of issued currency tokens along with a summary of their market- and metadata.',
+		server: 'https://s1.xrplmeta.org',
+		path: '/v2/tokens/iou',
+		request: {
+			query: iouTokenQuery
+		},
+		response: schemas.tokenListResponse
+	},
+	{
+		id: 'list-mpts',
+		title: 'List MPT Tokens',
+		description: 'Fetch a list of multi-purpose tokens along with a summary of their market- and metadata.',
+		server: 'https://s1.xrplmeta.org',
+		path: '/v2/tokens/mpt',
+		request: {
+			query: tokenQuery
+		},
+		response: schemas.tokenListResponse
 	},
 	{
 		id: 'get-token',
 		title: 'Get Token',
-		description: 'Fetch an individual token along with a summary of its market- and metadata.',
+		description: 'Fetch an individual IOU or MPT token along with a summary of its market- and metadata.',
 		server: 'https://s1.xrplmeta.org',
-		path: '/token/{identifier}',
+		path: '/v2/token/{identifier}',
 		request: {
 			path: {
 				identifier: {
 					required: true,
 					type: 'string',
-					description: 'A string uniquely identifying the token by concatenating the currency code with the issuing address using a colon, for example: "USD:rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B".'
+					description: 'An IOU identifier formatted as "currency:issuer", for example "USD:rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B", or an MPT issuance ID.'
 				}
 			},
-			query: {
-				include_sources: {
-					required: false,
-					type: 'boolean',
-					description: 'Wether to include the metadata sources for each field.',
-					default: false
-				},
-				include_changes: {
-					required: false,
-					type: 'boolean',
-					description: 'Wether to include the metric changes over time.',
-					default: false
-				},
-			}
+			query: tokenOptionsQuery
 		},
 		response: schemas.token
 	},
 	{
 		id: 'get-series',
 		title: 'Get Token Series',
-		description: 'Get a series of data points representing historical market or ledger data for a specific token. Either specify the time range or the sequence range. Not both.',
+		description: 'Get a series of data points representing historical market or ledger data for a specific IOU or MPT token. Either specify the time range or the sequence range. Not both.',
 		server: 'https://s1.xrplmeta.org',
-		path: '/token/{identifier}/series/{metric}',
+		path: '/v2/token/{identifier}/series/{metric}',
 		request: {
 			path: {
 				identifier: {
 					required: true,
 					type: 'string',
-					description: 'A string uniquely identifying the token by concatenating the currency code with the issuing address using a colon, for example: "USD:rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B".'
+					description: 'An IOU identifier formatted as "currency:issuer", for example "USD:rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B", or an MPT issuance ID.'
 				},
-				metric: {
-					required: true,
-					type: 'string',
-					description: 'The type of metric you want to fetch.',
-					enum: ['price', 'volume', 'trustlines', 'holders', 'marketcap', 'supply']
-				}
+				metric: seriesMetric
 			},
-			query: {
-				time_start: {
-					type: 'int',
-					description: 'A unix timestamp specifying the first data point. Negative values are interpreted as time back from now.'
-				},
-				time_end: {
-					type: 'int',
-					description: 'A unix timestamp specifying the last data point. Negative values are interpreted as time back from now.'
-				},
-				time_interval: {
-					type: 'int',
-					required: true,
-					description: 'The time interval between data points in seconds.'
-				},
-				sequence_start: {
-					type: 'int',
-					description: 'The ledger sequence specifying the first data point. Negative values are interpreted as ledgers back from current.'
-				},
-				sequence_end: {
-					type: 'int',
-					description: 'The ledger sequence specifying the last data point. Negative values are interpreted as ledgers back from current.'
-				},
-				sequence_interval: {
-					type: 'int',
-					required: true,
-					description: 'The ledger interval between data points.'
-				}
-			}
+			query: rangeQuery
 		},
 		response: {
 			type: 'array',
 			items: schemas.seriesPoint
 		}
+	},
+	{
+		id: 'get-exchanges',
+		title: 'Get Token Exchanges',
+		description: 'Fetch historical exchanges between two assets. Assets can be XRP, IOU identifiers, or MPT issuance IDs.',
+		server: 'https://s1.xrplmeta.org',
+		path: '/v2/tokens/exchanges/{base}/{quote}',
+		request: {
+			path: {
+				base: {
+					required: true,
+					type: 'string',
+					description: 'The base asset: XRP, an IOU identifier formatted as "currency:issuer", or an MPT issuance ID.'
+				},
+				quote: {
+					required: true,
+					type: 'string',
+					description: 'The quote asset: XRP, an IOU identifier formatted as "currency:issuer", or an MPT issuance ID.'
+				}
+			},
+			query: {
+				...rangeQuery,
+				newest_first: {
+					required: false,
+					type: 'boolean',
+					description: 'Wether to sort the newest exchanges first.',
+					default: false
+				},
+				limit: tokenQuery.limit,
+				offset: tokenQuery.offset
+			}
+		},
+		response: schemas.tokenExchangesResponse
+	},
+	{
+		id: 'get-holders',
+		title: 'Get Token Holders',
+		description: 'Fetch token holders at a specific ledger point. Defaults to the most recent ledger if neither sequence nor time is specified.',
+		server: 'https://s1.xrplmeta.org',
+		path: '/v2/token/{identifier}/holders',
+		request: {
+			path: {
+				identifier: {
+					required: true,
+					type: 'string',
+					description: 'An IOU identifier formatted as "currency:issuer", for example "USD:rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B", or an MPT issuance ID.'
+				}
+			},
+			query: {
+				...pointQuery,
+				limit: tokenQuery.limit,
+				offset: tokenQuery.offset
+			}
+		},
+		response: schemas.tokenHoldersResponse
 	}
 ]
 
@@ -681,6 +893,7 @@ export const websocket = [
 		description: 'Fetch generic information about the server.',
 		server: 'wss://s1.xrplmeta.org',
 		command: 'server_info',
+		api_version: 2,
 		request: {},
 		response: schemas.serverInfo
 	},
@@ -690,256 +903,82 @@ export const websocket = [
 		description: 'Fetch metadata about a specific ledger.',
 		server: 'wss://s1.xrplmeta.org',
 		command: 'ledger',
-		request: {
-			sequence: {
-				required: false,
-				type: 'int',
-				description: 'The ledger sequence of the ledger. Optional if time is specified.',
-			},
-			time: {
-				required: false,
-				type: 'int',
-				description: 'The unix timestamp of the ledger. Optional if sequence is specified.',
-			},
-			strict: {
-				required: false,
-				type: 'boolean',
-				description: 'If set to true, either the sequence or time parameter has to be an exact match.',
-				default: false
-			},
-		},
+		api_version: 2,
+		request: pointQuery,
 		response: schemas.ledger
 	},
 	{
 		id: 'list-tokens',
 		title: 'List Tokens',
-		description: 'Fetch a list of tokens along with a summary of their market- and metadata.',
+		description: 'Fetch a list of IOU and MPT tokens along with a summary of their market- and metadata.',
 		server: 'wss://s1.xrplmeta.org',
 		command: 'tokens',
-		request: {
-			name_like: {
-				required: false,
-				type: 'string',
-				description: 'A search term to filter the list of tokens by.'
-			},
-			expand_meta: {
-				required: false,
-				type: 'boolean',
-				description: 'Wether to return the full set of metadata including sources.',
-				default: false
-			},
-			include_changes: {
-				required: false,
-				type: 'boolean',
-				description: 'Wether to include the metric changes over time.',
-				default: false
-			},
-			sort_by: {
-				required: false,
-				type: 'string',
-				description: 'The metric the returned list of tokens should be sorted by',
-				enum: [
-					'trustlines',
-					'holders',
-					'supply',
-					'marketcap',
-					'[metric]_delta_24h',
-					'[metric]_percent_24h',
-					'[metric]_delta_7d',
-					'[metric]_percent_7d',
-				],
-				default: 'trustlines',
-			},
-			trust_level: {
-				required: false,
-				type: 'array',
-				description: 'Only return tokens having a trust level that is in this list.',
-				items: {
-					type: 'int'
-				},
-				default: [0, 1, 2, 3]
-			},
-			limit: {
-				required: false,
-				type: 'number',
-				description: 'Limit amount of tokens returned.',
-				default: 100,
-			},
-			offset: {
-				name: 'offset',
-				required: false,
-				type: 'number',
-				description: 'Paginate through all tokens available by incrementing the offset.',
-				default: 0,
-			}
-		},
-		response: {
-			type: 'object',
-			properties: {
-				tokens: {
-					type: 'array',
-					items: schemas.token,
-					description: 'The list of tokens.'
-				},
-				count: {
-					type: 'integer',
-					description: 'The total number of tokens that meet the query criteria.'
-				}
-			}
-		}
+		api_version: 2,
+		request: tokenQuery,
+		response: schemas.tokenListResponse
 	},
 	{
-		id: 'subscribe-to-tokens',
-		title: 'Subscribe to Token Updates',
-		description: 'Sends notifications for each specified token along with the new data to the client in realtime. The server forgets about the client\'s subscription list once it disconnects.',
+		id: 'list-ious',
+		title: 'List IOU Tokens',
+		description: 'Fetch a list of issued currency tokens along with a summary of their market- and metadata.',
 		server: 'wss://s1.xrplmeta.org',
-		command: 'tokens_subscribe',
-		request: {
-			tokens: {
-				type: 'array',
-				description: 'The list of tokens to subscribe to.',
-				items: schemas.basicToken
-			},
-			expand_meta: {
-				required: false,
-				type: 'boolean',
-				description: 'Wether to return the full set of metadata including sources.',
-				default: false
-			},
-			include_changes: {
-				required: false,
-				type: 'boolean',
-				description: 'Wether to include the metric changes over time.',
-				default: false
-			}
-		},
-		response: {
-			type: 'object',
-			properties: {
-				subscriptions: {
-					type: 'object',
-					description: 'The current list of token subscriptions that are active.',
-					properties: {
-						token: schemas.basicToken,
-						expand_meta: {
-							type: 'boolean',
-							description: 'Wether the full metadata is returned for updates on this token.',
-						},
-						include_changes: {
-							type: 'boolean',
-							description: 'Wether metric changes are included for updates on this token.',
-						}
-					}
-				}
-			}
-		}
+		command: 'iou_tokens',
+		api_version: 2,
+		request: iouTokenQuery,
+		response: schemas.tokenListResponse
 	},
 	{
-		id: 'unsubscribe-from-tokens',
-		title: 'Unsubscribe from Token Updates',
-		description: 'Clears any previously set subscriptions to the specified tokens.',
+		id: 'list-mpts',
+		title: 'List MPT Tokens',
+		description: 'Fetch a list of multi-purpose tokens along with a summary of their market- and metadata.',
 		server: 'wss://s1.xrplmeta.org',
-		command: 'tokens_unsubscribe',
-		request: {
-			tokens: {
-				type: 'array',
-				description: 'The list of tokens to unsubscribe from.',
-				items: schemas.basicToken
-			}
-		},
-		response: {
-			type: 'object',
-			properties: {
-				subscriptions: {
-					type: 'object',
-					description: 'The list of token subscriptions that are still active after unsubscribing.',
-					properties: {
-						token: schemas.basicToken,
-						expand_meta: {
-							type: 'boolean',
-							description: 'Wether the full metadata is returned for updates on this token.',
-						},
-						include_changes: {
-							type: 'boolean',
-							description: 'Wether metric changes are included for updates on this token.',
-						}
-					}
-				}
-			}
-		}
+		command: 'mpt_tokens',
+		api_version: 2,
+		request: tokenQuery,
+		response: schemas.tokenListResponse
 	},
 	{
 		id: 'get-token',
 		title: 'Get Token',
-		description: 'Fetch an individual token along with a summary of its market- and metadata.',
+		description: 'Fetch an individual IOU or MPT token along with a summary of its market- and metadata.',
 		server: 'wss://s1.xrplmeta.org',
 		command: 'token',
+		api_version: 2,
 		request: {
 			token: {
 				required: true,
 				type: 'object',
-				description: 'An object identifying the token.',
-				properties: {
-					currency: {
-						type: 'string',
-						description: 'The currency code of the token. Can be HEX or UTF-8.'
-					},
-					issuer: {
-						type: 'string',
-						description: 'The issuing address of the token.'
-					}
-				}
+				description: 'An object identifying an IOU by currency and issuer, or an MPT by mptIssuanceId.',
+				properties: schemas.basicToken.properties
 			},
-			include_sources: {
-				required: false,
-				type: 'boolean',
-				description: 'Wether to include the metadata sources for each field.',
-				default: false
-			},
-			include_changes: {
-				required: false,
-				type: 'boolean',
-				description: 'Wether to include the metric changes over time.',
-				default: false
-			},
+			...tokenOptionsQuery
 		},
 		response: schemas.token
 	},
 	{
 		id: 'get-series',
 		title: 'Get Token Series',
-		description: 'Get a series of data points representing historical market or ledger data for a specific token.',
+		description: 'Get a series of data points representing historical market or ledger data for a specific IOU or MPT token.',
 		server: 'wss://s1.xrplmeta.org',
 		command: 'token_series',
+		api_version: 2,
 		request: {
 			token: {
 				required: true,
 				type: 'object',
-				description: 'An object identifying the token.',
+				description: 'An object identifying an IOU by currency and issuer, or an MPT by mptIssuanceId.',
 				properties: schemas.basicToken.properties
 			},
-			metric: {
-				required: true,
-				type: 'string',
-				description: 'The type of metric you want to fetch.',
-				enum: ['price', 'volume', 'trustlines', 'holders', 'marketcap', 'supply']
-			},
+			metric: seriesMetric,
 			time: {
 				type: 'object',
 				description: 'Define a time range to get a time based series.',
 				properties: {
-					start: {
-						type: 'int',
-						description: 'A unix timestamp specifying the first data point. Negative values are interpreted as time back from now.'
-					},
-					end: {
-						type: 'int',
-						description: 'A unix timestamp specifying the last data point. Negative values are interpreted as time back from now.'
-					},
+					start: rangeQuery.time_start,
+					end: rangeQuery.time_end,
 					interval: {
-						type: 'int',
-						required: true,
-						description: 'The time interval between data points in seconds.'
+						...rangeQuery.time_interval,
+						required: true
 					}
 				}
 			},
@@ -947,18 +986,11 @@ export const websocket = [
 				type: 'object',
 				description: 'Define a ledger sequence range to get a ledger sequence based series.',
 				properties: {
-					start: {
-						type: 'int',
-						description: 'The ledger sequence specifying the first data point. Negative values are interpreted as ledgers back from current.'
-					},
-					end: {
-						type: 'int',
-						description: 'The ledger sequence specifying the last data point. Negative values are interpreted as ledgers back from current.'
-					},
+					start: rangeQuery.sequence_start,
+					end: rangeQuery.sequence_end,
 					interval: {
-						type: 'int',
-						required: true,
-						description: 'The ledger interval between data points.'
+						...rangeQuery.sequence_interval,
+						required: true
 					}
 				}
 			}
@@ -967,5 +999,75 @@ export const websocket = [
 			type: 'array',
 			items: schemas.seriesPoint
 		}
+	},
+	{
+		id: 'get-exchanges',
+		title: 'Get Token Exchanges',
+		description: 'Fetch historical exchanges between two assets. Assets can be XRP, IOU identifiers, or MPT identifiers.',
+		server: 'wss://s1.xrplmeta.org',
+		command: 'token_exchanges',
+		api_version: 2,
+		request: {
+			base: {
+				required: true,
+				type: 'object',
+				description: 'The base asset. Use { currency: "XRP" } for XRP, currency and issuer for IOUs, or mptIssuanceId for MPTs.',
+				properties: schemas.basicToken.properties
+			},
+			quote: {
+				required: true,
+				type: 'object',
+				description: 'The quote asset. Use { currency: "XRP" } for XRP, currency and issuer for IOUs, or mptIssuanceId for MPTs.',
+				properties: schemas.basicToken.properties
+			},
+			sequence: {
+				type: 'object',
+				description: 'Optional ledger sequence range. Defaults to the full available range if neither sequence nor time is specified.',
+				properties: {
+					start: rangeQuery.sequence_start,
+					end: rangeQuery.sequence_end
+				}
+			},
+			time: {
+				type: 'object',
+				description: 'Optional time range. Defaults to the full available range if neither sequence nor time is specified.',
+				properties: {
+					start: rangeQuery.time_start,
+					end: rangeQuery.time_end
+				}
+			},
+			newestFirst: {
+				required: false,
+				type: 'boolean',
+				description: 'Wether to sort the newest exchanges first.',
+				default: false
+			},
+			limit: {
+				...tokenQuery.limit,
+				default: 100
+			},
+			offset: tokenQuery.offset
+		},
+		response: schemas.tokenExchangesResponse
+	},
+	{
+		id: 'get-holders',
+		title: 'Get Token Holders',
+		description: 'Fetch token holders at a specific ledger point. Defaults to the most recent ledger if neither sequence nor time is specified.',
+		server: 'wss://s1.xrplmeta.org',
+		command: 'token_holders',
+		api_version: 2,
+		request: {
+			token: {
+				required: true,
+				type: 'object',
+				description: 'An object identifying an IOU by currency and issuer, or an MPT by mptIssuanceId.',
+				properties: schemas.basicToken.properties
+			},
+			...pointQuery,
+			limit: tokenQuery.limit,
+			offset: tokenQuery.offset
+		},
+		response: schemas.tokenHoldersResponse
 	}
 ]

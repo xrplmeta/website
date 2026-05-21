@@ -19,7 +19,7 @@ export default function HowToUse(){
 			</Text>
 			<Heading secondary>Example Request</Heading>
 			<Stack className="example-request">
-				<ExampleRequest {...rest[1]} path="/token/USD:rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"/>
+				<ExampleRequest {...rest[1]} path="/v2/token/USD:rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"/>
 			</Stack>
 		</Stack>
 	)
