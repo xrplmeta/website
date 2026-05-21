@@ -68,10 +68,8 @@ export default function DevsDocs({ mode }: { mode?: 'rest' | 'websocket' }){
 				<Text>Feel free to use one of the publicly available nodes listed below.</Text>
 				<Stack className="nodes">
 					<Node domain="s1.xrplmeta.org" history="History: last 12 months"/>
-					<Node domain="s2.xrplmeta.org" history="History: full history" offline/>
-					<Node domain="sx.xrplmeta.org" history="Experimental NFT support" offline/>
+					<Node domain="s2.xrplmeta.org" history="History: last 12 months"/>
 				</Stack>
-				<Text className="hint">Some nodes are still in development. More will be added soon.</Text>
 			</Stack>
 			<Stack className="section page-width self-hosted">
 				<Heading>Host your own Node</Heading>
@@ -84,16 +82,12 @@ export default function DevsDocs({ mode }: { mode?: 'rest' | 'websocket' }){
 					<li>NPM Package Manager</li>
 					<li>At least 4 GB of disk storage</li>
 				</ul>
-				<Text>Run the following command to install it as a global program:</Text>
-				<code>npm install -g xrplmeta</code>
 				<Text>
-					<span>You now can start your node by running the </span>
-					<code>xrplmeta</code>
-					<span> command. </span>
-					<span>Visit the </span>
-					<Link to="https://github.com/Mwni/xrplmeta">GitHub Repository</Link>
-					<span> for additional instructions.</span>
+					<span>The node software is still in alpha, so clone the </span>
+					<Link to="https://github.com/xrplmeta/node">GitHub Repository</Link>
+					<span> and follow the instructions in the readme file.</span>
 				</Text>
+				<code>git clone https://github.com/xrplmeta/node</code>
 			</Stack>
 		</Stack>
 	)
