@@ -11,14 +11,14 @@ export default function Trust(){
 				actors, is by assigning a trust level to each token.
 			</Text>
 			<TrustTable/>
-			<Heading secondary>Tokenlists</Heading>
+			<Heading secondary>Trust Lists</Heading>
 			<Text>
 				<span>
-					The way trust level 2 and 3 are established is through Auxiliary Token Lists.
-					These lists can be published by anyone, and are automatically scraped by the
+					The way trust level 2 and 3 are established is through so called "Trust Lists".
+					These lists can be published by anyone, and are automatically scraped by 
 				</span>
 				<span> </span>
-				<Link to="https://github.com/xrplworks/xrplmeta">XRPL Meta Server</Link>
+				<Link to="https://github.com/xrplmeta/node">XRPL Meta Nodes</Link>
 				<span>
 					. However, only the lists of trusted publishers have the ability set the trust level
 					for any token. All lists are expected to follow the
