@@ -19,14 +19,6 @@ const ledgerFeatures = [
 	'Time Series of Statistics'
 ]
 
-const nftFeatures = [
-	'List of all NFTs on the XRPL',
-	'Full NFT Metadata',
-	'Content Cache and Relay',
-	'Current Price and active Offers',
-	'Listing and Sale History'
-]
-
 export default function Intro(){
 	return (
 		<>
@@ -54,18 +46,9 @@ export default function Intro(){
 				<Flex className="dual-col">
 					<Stack>
 						<Tile asset="token" title="Token Data" items={tokenFeatures}/>
-						<Tile asset="ledger" iconClass="ledger" title="Ledger Data" items={ledgerFeatures}/>
 					</Stack>
 					<Stack>
-						<Tile
-							asset="cube"
-							iconClass="nft"
-							title="NFT Data"
-							items={nftFeatures}
-							pending
-							disabled
-							note="NFT Support is currently in development."
-						/>
+						<Tile asset="ledger" iconClass="ledger" title="Ledger Data" items={ledgerFeatures}/>
 						<Stack className="tile issuers-note">
 							<Flex>
 								<Heading secondary>Are you a token issuer?</Heading>
