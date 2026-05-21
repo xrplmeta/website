@@ -8,8 +8,14 @@ export default function UserApps(){
 			<Heading>Who's Using It</Heading>
 			<a id="apps"/>
 			<Stack className="apps">
-				<App icon="xumm" desc="Mobile Wallet" name="Xumm" href="https://xumm.app">
-					XUMM uses XRPL Meta for displaying token icons.
+				<App icon="livenet" desc="Explorer" name="Official XRPL Explorer" href="https://livenet.xrpl.org/tokens">
+					The official XRPL Explorer uses XRPL Meta for indexing all tokens.
+				</App>
+				<App icon="xaman" desc="Mobile Wallet" name="Xaman" href="https://xaman.app">
+					Xaman uses XRPL Meta for displaying token icons.
+				</App>
+				<App icon="unhosted.exchange" desc="Trading Platform" name="DEX Trade xApp" href="https://xdex.com">
+					The Xaman DEX Trade xApp uses XRPL Meta for listing all tradeable tokens.
 				</App>
 				<App icon="xdex" desc="Trading Platform" name="XDEX" href="https://xdex.com">
 					XDEX uses XRPL Meta for all its market, token and NFT data.
@@ -20,7 +26,7 @@ export default function UserApps(){
 						<label>Your app could be here.</label>
 						<Text>
 							<span>Tweet or contact us at </span>
-							<Link to="https://twitter.com/xrplmeta">@xrplmeta</Link>
+							<Link to="https://x.com/xrplmeta">@xrplmeta</Link>
 							<span>.</span>
 						</Text>
 					</Stack>
@@ -39,7 +45,7 @@ function App({ icon, desc, name, href, children }: {
 }){
 	return (
 		<Flex>
-			<Icon asset={icon}/>
+			<Icon className="app-icon" asset={icon}/>
 			<Stack>
 				<label className="desc">{desc}</label>
 				<Link to={href} target="_blank">

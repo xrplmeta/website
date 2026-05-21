@@ -24421,7 +24421,12 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
   function Text({ className, ...props }) {
     return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { ...props, className: join("x-text", className) });
   }
-  var pngAssets = /* @__PURE__ */ new Set(["xumm", "xdex"]);
+  var pngAssets = /* @__PURE__ */ new Set([
+    "livenet",
+    "xaman",
+    "unhosted.exchange",
+    "xdex"
+  ]);
   function Icon({ asset, src, className, alt = "", multicolor: _multicolor, ...props }) {
     const resolved = src ?? (asset ? `/static/${asset}.${pngAssets.has(asset) ? "png" : "svg"}` : void 0);
     return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
@@ -24502,7 +24507,9 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
       /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(Heading, { children: "Who's Using It" }),
       /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("a", { id: "apps" }),
       /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(Stack, { className: "apps", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(App, { icon: "xumm", desc: "Mobile Wallet", name: "Xumm", href: "https://xumm.app", children: "XUMM uses XRPL Meta for displaying token icons." }),
+        /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(App, { icon: "livenet", desc: "Explorer", name: "Official XRPL Explorer", href: "https://livenet.xrpl.org/tokens", children: "The official XRPL Explorer uses XRPL Meta for indexing all tokens." }),
+        /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(App, { icon: "xaman", desc: "Mobile Wallet", name: "Xaman", href: "https://xaman.app", children: "Xaman uses XRPL Meta for displaying token icons." }),
+        /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(App, { icon: "unhosted.exchange", desc: "Trading Platform", name: "DEX Trade xApp", href: "https://xdex.com", children: "The Xaman DEX Trade xApp uses XRPL Meta for listing all tradeable tokens." }),
         /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(App, { icon: "xdex", desc: "Trading Platform", name: "XDEX", href: "https://xdex.com", children: "XDEX uses XRPL Meta for all its market, token and NFT data." }),
         /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(Flex, { className: "placeholder", children: [
           /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(Stack, { className: "icon" }),
@@ -24510,7 +24517,7 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
             /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("label", { children: "Your app could be here." }),
             /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(Text, { children: [
               /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { children: "Tweet or contact us at " }),
-              /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(Link2, { to: "https://twitter.com/xrplmeta", children: "@xrplmeta" }),
+              /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(Link2, { to: "https://x.com/xrplmeta", children: "@xrplmeta" }),
               /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { children: "." })
             ] })
           ] })
@@ -24520,7 +24527,7 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
   }
   function App({ icon, desc, name, href, children }) {
     return /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(Flex, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(Icon, { asset: icon }),
+      /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(Icon, { className: "app-icon", asset: icon }),
       /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(Stack, { children: [
         /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("label", { className: "desc", children: desc }),
         /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(Link2, { to: href, target: "_blank", children: /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(Flex, { children: [

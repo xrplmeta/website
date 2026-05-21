@@ -16,6 +16,10 @@
 			}
 		}
 
+		.app-icon{
+			border-radius: 15px;
+		}
+
 		.x-link .x-icon{
 			width: 16px;
 			color: var(--color-hint);

@@ -45,7 +45,12 @@ type IconProps = React.ImgHTMLAttributes<HTMLImageElement> & {
 	multicolor?: boolean
 }
 
-const pngAssets = new Set(['xumm', 'xdex'])
+const pngAssets = new Set([
+	'livenet',
+	'xaman',
+	'unhosted.exchange',
+	'xdex'
+])
 
 export function Icon({ asset, src, className, alt = '', multicolor: _multicolor, ...props }: IconProps){
 	const resolved = src ?? (asset ? `/static/${asset}.${pngAssets.has(asset) ? 'png' : 'svg'}` : undefined)
