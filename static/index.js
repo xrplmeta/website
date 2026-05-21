@@ -24425,6 +24425,10 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
     "livenet",
     "xaman",
     "unhosted.exchange",
+    "richlist.zerp",
+    "heroesxrpl",
+    "spydex",
+    "xpmarket",
     "xdex"
   ]);
   function Icon({ asset, src, className, alt = "", multicolor: _multicolor, ...props }) {
@@ -24509,7 +24513,12 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
       /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(Stack, { className: "apps", children: [
         /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(App, { icon: "livenet", desc: "Explorer", name: "Official XRPL Explorer", href: "https://livenet.xrpl.org/tokens", children: "The official XRPL Explorer uses XRPL Meta for indexing all tokens." }),
         /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(App, { icon: "xaman", desc: "Mobile Wallet", name: "Xaman", href: "https://xaman.app", children: "Xaman uses XRPL Meta for displaying token icons." }),
+        /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(App, { icon: "xpmarket", desc: "Trading Platform", name: "XPMarket", href: "https://xpmarket.com", children: "XPMarket uses XRPL Meta as supplementary token metadata source." }),
         /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(App, { icon: "unhosted.exchange", desc: "Trading Platform", name: "DEX Trade xApp", href: "https://xdex.com", children: "The Xaman DEX Trade xApp uses XRPL Meta for listing all tradeable tokens." }),
+        /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(App, { icon: "spydex", desc: "Trading Platform", name: "SpyDex", href: "https://spydex.net", children: "SpyDex uses XRPL Meta as supplementary token metadata source." }),
+        /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(App, { icon: "orchestra.finance", desc: "Trading Platform", name: "Orchestra Finance", href: "https://orchestra.finance", children: "Orchestra Finance uses XRPL Meta for displaying token icons and names." }),
+        /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(App, { icon: "richlist.zerp", desc: "Analytics", name: "Zerp Richlist", href: "https://richlist.zerp.network/", children: "The Zerp Richlist uses XRPL Meta for its list of all tokens." }),
+        /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(App, { icon: "heroesxrpl", desc: "Trading Platform", name: "HEROES Exchange", href: "https://richlist.zerp.network/", children: "The HEROES XRPL Exchange uses XRPL Meta for displaying token icons." }),
         /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(App, { icon: "xdex", desc: "Trading Platform", name: "XDEX", href: "https://xdex.com", children: "XDEX uses XRPL Meta for all its market, token and NFT data." }),
         /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(Flex, { className: "placeholder", children: [
           /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(Stack, { className: "icon" }),

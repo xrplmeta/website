@@ -49,6 +49,10 @@ const pngAssets = new Set([
 	'livenet',
 	'xaman',
 	'unhosted.exchange',
+	'richlist.zerp',
+	'heroesxrpl',
+	'spydex',
+	'xpmarket',
 	'xdex'
 ])
 
