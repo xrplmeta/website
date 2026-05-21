@@ -1,5 +1,5 @@
 import { Stack } from '../x'
-import Apps from './Apps'
+import UserApps from './UserApps'
 import HowToUse from './HowToUse'
 import Intro from './Intro'
 import Trust from './Trust'
@@ -10,7 +10,7 @@ export default function DevsIndex(){
 			<Intro/>
 			<HowToUse/>
 			<Trust/>
-			<Apps/>
+			<UserApps/>
 		</Stack>
 	)
 }

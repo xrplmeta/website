@@ -1,16 +1,17 @@
 import { Flex, Heading, Icon, Link, Stack, Text } from '../x'
 import type { ReactNode } from 'react'
 import './Intro.css'
+import UserApps from '../devs/UserApps'
 
 export default function Intro(){
 	return (
 		<>
 			<Stack className="section page-width splash">
-				<Heading>Your Gateway to the XRP Ledger Ecosystem.</Heading>
-				<Heading secondary>Made for your Convenience.</Heading>
+				<Heading>Make Your XRPL Token Visible To The Ecosystem</Heading>
+				<Heading secondary>Publish Once, Distribute To Many</Heading>
 			</Stack>
 			<Stack className="section page-width intro">
-				<Heading>Your Token: Seen Everywhere</Heading>
+				<Heading>What XRPL Meta Is</Heading>
 				<Text>
 					XRPL Meta is a service that provides apps with metadata about assets on the ledger.
 					It allows token- or NFT issuers, like yourself, to self-publish details about their
@@ -18,41 +19,7 @@ export default function Intro(){
 				</Text>
 				<Flex className="links"/>
 			</Stack>
-			<Stack className="section page-width showcase in-view">
-				<Flex className="strip">
-					<Case
-						app="Xumm"
-						icon="xumm"
-						screen="xumm-screen"
-						accent="xumm-screen-accent"
-						desc="Mobile Wallet"
-						href="https://xumm.app"
-					>
-						XUMM uses XRPL Meta for displaying token icons.
-					</Case>
-					<Case
-						app="XDEX"
-						icon="xdex"
-						screen="xdex-screen"
-						accent="xdex-screen-accent"
-						desc="Trading App"
-						href="https://xdex.com"
-					>
-						XDEX uses XRPL Meta for its token indices and market data.
-					</Case>
-					<Stack className="case placeholder">
-						<Stack className="phone"/>
-						<Flex>
-							<Stack className="icon"/>
-							<Stack>
-								<label className="name">? ? ?</label>
-								<label className="desc">&nbsp;</label>
-							</Stack>
-						</Flex>
-						<Text>Announcement soon.</Text>
-					</Stack>
-				</Flex>
-			</Stack>
+			<UserApps/>
 		</>
 	)
 }

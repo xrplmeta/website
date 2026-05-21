@@ -1,11 +1,11 @@
 import { Flex, Heading, Icon, Link, Stack, Text } from '../x'
 import type { ReactNode } from 'react'
-import './Apps.css'
+import './UserApps.css'
 
-export default function Apps(){
+export default function UserApps(){
 	return (
 		<Stack className="section page-width users">
-			<Heading>Who is using it</Heading>
+			<Heading>Who's Using It</Heading>
 			<a id="apps"/>
 			<Stack className="apps">
 				<App icon="xumm" desc="Mobile Wallet" name="Xumm" href="https://xumm.app">

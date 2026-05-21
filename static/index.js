@@ -24495,11 +24495,11 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
     return parts.filter(Boolean).join(" ");
   }
 
-  // src/ui/devs/Apps.tsx
+  // src/ui/devs/UserApps.tsx
   var import_jsx_runtime2 = __toESM(require_jsx_runtime(), 1);
-  function Apps() {
+  function UserApps() {
     return /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(Stack, { className: "section page-width users", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(Heading, { children: "Who is using it" }),
+      /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(Heading, { children: "Who's Using It" }),
       /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("a", { id: "apps" }),
       /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(Stack, { className: "apps", children: [
         /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(App, { icon: "xumm", desc: "Mobile Wallet", name: "Xumm", href: "https://xumm.app", children: "XUMM uses XRPL Meta for displaying token icons." }),
@@ -25848,7 +25848,7 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
       /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(Intro, {}),
       /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(HowToUse, {}),
       /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(Trust, {}),
-      /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(Apps, {})
+      /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(UserApps, {})
     ] });
   }
 
@@ -26254,70 +26254,15 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
   function Intro2() {
     return /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)(import_jsx_runtime26.Fragment, { children: [
       /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)(Stack, { className: "section page-width splash", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(Heading, { children: "Make Your Token Visible" }),
-        /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(Heading, { secondary: true, children: "Publish Metadata" })
+        /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(Heading, { children: "Make Your XRPL Token Visible To The Ecosystem" }),
+        /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(Heading, { secondary: true, children: "Publish Once, Distribute To Many" })
       ] }),
       /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)(Stack, { className: "section page-width intro", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(Heading, { children: "Your Token: Seen Everywhere" }),
+        /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(Heading, { children: "What XRPL Meta Is" }),
         /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(Text, { children: "XRPL Meta is a service that provides apps with metadata about assets on the ledger. It allows token- or NFT issuers, like yourself, to self-publish details about their projects. This is done in a decentralized manner. This means: you own your data." }),
         /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(Flex, { className: "links" })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(Stack, { className: "section page-width showcase in-view", children: /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)(Flex, { className: "strip", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(
-          Case,
-          {
-            app: "Xumm",
-            icon: "xumm",
-            screen: "xumm-screen",
-            accent: "xumm-screen-accent",
-            desc: "Mobile Wallet",
-            href: "https://xumm.app",
-            children: "XUMM uses XRPL Meta for displaying token icons."
-          }
-        ),
-        /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(
-          Case,
-          {
-            app: "XDEX",
-            icon: "xdex",
-            screen: "xdex-screen",
-            accent: "xdex-screen-accent",
-            desc: "Trading App",
-            href: "https://xdex.com",
-            children: "XDEX uses XRPL Meta for its token indices and market data."
-          }
-        ),
-        /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)(Stack, { className: "case placeholder", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(Stack, { className: "phone" }),
-          /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)(Flex, { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(Stack, { className: "icon" }),
-            /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)(Stack, { children: [
-              /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("label", { className: "name", children: "? ? ?" }),
-              /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("label", { className: "desc", children: "\xA0" })
-            ] })
-          ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(Text, { children: "Announcement soon." })
-        ] })
-      ] }) })
-    ] });
-  }
-  function Case({ app, icon, screen, accent, desc, href, children }) {
-    return /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)(Stack, { className: "case", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(Stack, { className: "phone", children: /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)(Stack, { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(Icon, { asset: screen }),
-        /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(Icon, { asset: accent })
-      ] }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)(Flex, { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(Icon, { asset: icon }),
-        /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)(Stack, { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(Link2, { to: href, target: "_blank", children: /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)(Flex, { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("label", { className: "name", children: app }),
-            /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(Icon, { asset: "external-hint" })
-          ] }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("label", { className: "desc", children: desc })
-        ] })
-      ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(Text, { children })
+      /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(UserApps, {})
     ] });
   }
 
