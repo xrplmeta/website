@@ -1,6 +1,6 @@
 import { useParams } from 'react-router'
-import { Command, Procedure } from '../../../../../../docier/websocket/index.js'
-import { Endpoint, Operation } from '../../../../../../docier/rest/index.js'
+import { Command, Procedure } from 'docier/websocket'
+import { Endpoint, Operation } from 'docier/rest'
 import { rest, websocket } from '../../../defs/apis.js'
 import Back from '../../common/Back'
 import { Flex, Heading, Icon, Link, Stack, Text } from '../../x'

@@ -1,4 +1,4 @@
-import { ExampleRequest } from '../../../../../docier/rest/index.js'
+import { ExampleRequest } from 'docier/rest'
 import { rest } from '../../defs/apis.js'
 import { Heading, Link, Stack, Text } from '../x'
 import './HowToUse.css'

@@ -1,4 +1,4 @@
-import { Procedure } from '../../../../../../docier/websocket/index.js'
+import { Procedure } from 'docier/websocket'
 import { Heading, Stack } from '../../x'
 
 export default function WebSocketDocs({ descriptor }: { descriptor: any }){

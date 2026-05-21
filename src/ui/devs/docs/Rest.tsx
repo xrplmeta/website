@@ -1,4 +1,4 @@
-import { Operation } from '../../../../../../docier/rest/index.js'
+import { Operation } from 'docier/rest'
 import { Heading, Stack } from '../../x'
 
 export default function Rest({ descriptor }: { descriptor: any }){

@@ -283,8 +283,8 @@ div.x-modal > .window {
         &::after {
           content: "";
           position: absolute;
-          top: 2px;
-          left: 2px;
+          top: 3px;
+          left: 3px;
           width: 6px;
           height: 6px;
           border-radius: 7px;

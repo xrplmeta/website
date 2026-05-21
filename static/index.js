@@ -25659,13 +25659,6 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
     "Historical Statistics",
     "Time Series of Statistics"
   ];
-  var nftFeatures = [
-    "List of all NFTs on the XRPL",
-    "Full NFT Metadata",
-    "Content Cache and Relay",
-    "Current Price and active Offers",
-    "Listing and Sale History"
-  ];
   function Intro() {
     return /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)(import_jsx_runtime8.Fragment, { children: [
       /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)(Stack, { className: "section page-width splash", children: [
@@ -25682,23 +25675,9 @@ Please change the parent <Route path="${parentPath}"> to <Route path="${parentPa
         ] }) })
       ] }),
       /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(Stack, { className: "section page-width features", children: /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)(Flex, { className: "dual-col", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(Stack, { children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(Tile, { asset: "token", title: "Token Data", items: tokenFeatures }) }),
         /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)(Stack, { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(Tile, { asset: "token", title: "Token Data", items: tokenFeatures }),
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(Tile, { asset: "ledger", iconClass: "ledger", title: "Ledger Data", items: ledgerFeatures })
-        ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)(Stack, { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(
-            Tile,
-            {
-              asset: "cube",
-              iconClass: "nft",
-              title: "NFT Data",
-              items: nftFeatures,
-              pending: true,
-              disabled: true,
-              note: "NFT Support is currently in development."
-            }
-          ),
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(Tile, { asset: "ledger", iconClass: "ledger", title: "Ledger Data", items: ledgerFeatures }),
           /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)(Stack, { className: "tile issuers-note", children: [
             /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)(Flex, { children: [
               /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(Heading, { secondary: true, children: "Are you a token issuer?" }),
