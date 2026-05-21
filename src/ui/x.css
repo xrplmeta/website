@@ -1,0 +1,131 @@
+html{
+	height: 100%;
+}
+
+body{
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	min-height: 100%;
+	min-height: 100vh;
+	min-height: -webkit-fill-available;
+	padding: 0;
+	margin: 0;
+	touch-action: manipulation;
+	width: 100%;
+}
+
+#app{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+}
+
+label{
+	display: block;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+a.x-link{
+	color: inherit;
+	text-decoration: none;
+}
+
+p.x-text{
+	margin: 0;
+}
+
+img.x-image,
+img.x-icon{
+	display: block;
+	width: auto;
+	height: auto;
+}
+
+div.x-stack,
+div.x-flex{
+	display: flex;
+	justify-content: flex-start;
+}
+
+div.x-flex{
+	flex-direction: row;
+	align-items: center;
+}
+
+div.x-stack{
+	flex-direction: column;
+	align-items: stretch;
+}
+
+div.x-absolute{
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+div.x-absolute > *{
+	position: absolute !important;
+	top: 0;
+	left: 0;
+}
+
+span.x-heading{
+	display: block;
+}
+
+button.logo-button{
+	appearance: none;
+	background: transparent;
+	border: 0;
+	color: inherit;
+	font: inherit;
+	padding: 0;
+	cursor: pointer;
+}
+
+a.x-link[disabled]{
+	pointer-events: none;
+}
+
+.mobile-menu{
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+}
+
+.docier.snippet > pre,
+.snippet{
+	font-family: var(--font-mono);
+	white-space: pre-wrap;
+}
+
+div.x-modal{
+	position: fixed !important;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: 1001;
+	background-color: rgba(30, 30, 30, 0.7);
+	overflow-y: auto;
+	box-sizing: border-box;
+	padding: 25px 0;
+}
+
+div.x-modal > .window{
+	position: relative;
+	margin: auto;
+	background-color: white;
+	border-radius: 18px;
+	overflow: hidden;
+	z-index: 1002;
+}
