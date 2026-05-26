@@ -24,7 +24,7 @@ export default function Trust(){
 					for any token. All lists are expected to follow the
 				</span>
 				<span> </span>
-				<Link to="https://github.com/XRPLF/XRPL-Standards/discussions/71">XLS-26 Standard</Link>
+				<Link to="https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0026-iou-token-metadata">XLS-26 Standard</Link>
 				<span>.</span>
 			</Text>
 		</Stack>

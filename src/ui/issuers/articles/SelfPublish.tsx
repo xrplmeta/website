@@ -49,7 +49,7 @@ export default function SelfPublish(){
 			<Heading secondary>Step 1: Craft the xrp-ledger.toml file</Heading>
 			<Text>
 				<span>The file should follow the </span>
-				<Link to="https://github.com/XRPLF/XRPL-Standards/discussions/71">XLS-26 Standard</Link>
+				<Link to="https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0026-iou-token-metadata">XLS-26 Standard</Link>
 				<span>. Below is an example.</span>
 			</Text>
 			<Stack className="docier snippet">
